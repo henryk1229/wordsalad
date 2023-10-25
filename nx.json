@@ -55,5 +55,6 @@
       }
     }
   },
-  "nxCloudAccessToken": "YzkwMjU3YmYtOWY0NC00MThkLTkzNDUtNTY1Nzg5YzdjZmI3fHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "YzkwMjU3YmYtOWY0NC00MThkLTkzNDUtNTY1Nzg5YzdjZmI3fHJlYWQtd3JpdGU=",
+  "plugins": ["@monodon/rust"]
 }

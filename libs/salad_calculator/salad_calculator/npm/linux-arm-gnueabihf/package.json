@@ -1,0 +1,17 @@
+{
+  "name": "libs_salad_calculator_salad_calculator-linux-arm-gnueabihf",
+  "version": "0.0.0",
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "arm"
+  ],
+  "main": "libs_salad_calculator_salad_calculator.linux-arm-gnueabihf.node",
+  "files": [
+    "libs_salad_calculator_salad_calculator.linux-arm-gnueabihf.node"
+  ],
+  "engines": {
+    "node": ">= 10"
+  }
+}

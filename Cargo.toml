@@ -1,0 +1,8 @@
+
+[workspace]
+members = [
+	'./libs/salad_calculator/salad_calculator',
+]
+
+[profile.release]
+lto = true

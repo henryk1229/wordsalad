@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@monodon/rust": "^1.2.0",
+    "@napi-rs/cli": "2.14.8",
     "@nx/cypress": "17.0.1",
     "@nx/eslint": "17.0.1",
     "@nx/eslint-plugin": "17.0.1",

@@ -1,0 +1,17 @@
+{
+  "name": "libs_salad_calculator_salad_calculator-win32-ia32-msvc",
+  "version": "0.0.0",
+  "os": [
+    "win32"
+  ],
+  "cpu": [
+    "ia32"
+  ],
+  "main": "libs_salad_calculator_salad_calculator.win32-ia32-msvc.node",
+  "files": [
+    "libs_salad_calculator_salad_calculator.win32-ia32-msvc.node"
+  ],
+  "engines": {
+    "node": ">= 10"
+  }
+}

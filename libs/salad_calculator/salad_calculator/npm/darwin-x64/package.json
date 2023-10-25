@@ -1,0 +1,17 @@
+{
+  "name": "libs_salad_calculator_salad_calculator-darwin-x64",
+  "version": "0.0.0",
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "libs_salad_calculator_salad_calculator.darwin-x64.node",
+  "files": [
+    "libs_salad_calculator_salad_calculator.darwin-x64.node"
+  ],
+  "engines": {
+    "node": ">= 10"
+  }
+}
