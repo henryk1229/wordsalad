@@ -12,6 +12,7 @@
     "@nx/cypress": "17.0.1",
     "@nx/eslint": "17.0.1",
     "@nx/eslint-plugin": "17.0.1",
+    "@nx/express": "^17.0.1",
     "@nx/js": "17.0.1",
     "@nx/react": "17.0.1",
     "@nx/vite": "17.0.1",
