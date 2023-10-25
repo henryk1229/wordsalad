@@ -2,7 +2,6 @@
   "name": "@wordsalad/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
   "private": true,
   "dependencies": {
     "@swc/helpers": "~0.5.2",
