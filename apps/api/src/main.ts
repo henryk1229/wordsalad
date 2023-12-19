@@ -40,7 +40,7 @@ app.post('/spellcheck', (req, res) => {
   res.send({ valid: isValidWord });
 });
 
-app.get('/generate-salad', async (_req, res) => {
+app.post('/generate-salad', async (_req, res) => {
   const { rows } = await query({
     text: 'select initial_word from salads',
   });
