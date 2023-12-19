@@ -4,12 +4,24 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@react-spring/web": "^9.7.3",
+    "@stitches/react": "^1.2.8",
     "@swc/helpers": "~0.5.2",
     "axios": "^1.0.0",
+    "better-random-words": "^1.0.0",
+    "change-case": "^5.3.0",
+    "cors": "^2.8.5",
+    "envalid": "^8.0.0",
     "express": "^4.18.1",
+    "pg": "^8.11.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tslib": "^2.3.0"
+    "react-hot-toast": "^2.4.1",
+    "react-responsive-modal": "^6.4.2",
+    "react-tooltip": "^5.25.0",
+    "salad_calculator": "^0.1.4",
+    "tslib": "^2.3.0",
+    "typo-js": "^1.2.3"
   },
   "devDependencies": {
     "@nx/cypress": "17.0.1",
@@ -30,6 +42,7 @@
     "@types/express": "4.17.13",
     "@types/jest": "^29.4.0",
     "@types/node": "18.14.2",
+    "@types/pg": "^8.10.9",
     "@types/react": "18.2.24",
     "@types/react-dom": "18.2.9",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
