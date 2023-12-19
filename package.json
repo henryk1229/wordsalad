@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "nx run-many -t serve"
+  },
   "dependencies": {
     "@react-spring/web": "^9.7.3",
     "@stitches/react": "^1.2.8",
