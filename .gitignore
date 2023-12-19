@@ -5,6 +5,10 @@ dist
 tmp
 /out-tsc
 
+# dotenv environment variables file
+.env
+.env.test
+
 # dependencies
 node_modules
 
