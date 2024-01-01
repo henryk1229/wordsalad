@@ -4,7 +4,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "nx run-many -t serve"
+    "start": "nx run-many -t serve",
+    "build": "nx run-many -t build",
+    "build-client": "nx run wordsalad:build"
   },
   "engines": {
     "node": "^16.14.0"
