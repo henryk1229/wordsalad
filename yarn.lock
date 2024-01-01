@@ -4358,6 +4358,7 @@ __metadata:
     cors: ^2.8.5
     cypress: ^13.0.0
     envalid: ^8.0.0
+    envsafe: ^2.0.3
     eslint: ~8.46.0
     eslint-config-prettier: ^9.0.0
     eslint-plugin-cypress: ^2.13.4
@@ -6934,6 +6935,13 @@ __metadata:
   dependencies:
     tslib: 2.6.2
   checksum: f8f9f06b6698f3e53ca07262f022a89b99e47ad9e4af35dff695a778f64027af3125e5ed4816c973a3ab325e0b772a519e6dea3a98903e23e81a771a162e5acd
+  languageName: node
+  linkType: hard
+
+"envsafe@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "envsafe@npm:2.0.3"
+  checksum: e2a9935d97aebfac6993d0ecaa5e8725d8fd40c2848d7021969cb8c223d4fea5940700c24df1afc7ae56cf5dbefe9d7ec6bff78bb6ec23f993ab4ddaf076b2a1
   languageName: node
   linkType: hard
 

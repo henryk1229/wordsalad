@@ -12,8 +12,9 @@ import EnterButton from '../buttons/EnterButton';
 import RestartButton from '../buttons/RestartButton';
 import { useWatchGameFlow } from '../../hooks/useWatchGameFlow';
 import { styled } from '../../styles';
+import config from '../../config';
 
-const URL = 'http://localhost:3000/spellcheck';
+const URL = `${config.apiUrl}/spellcheck`;
 
 const BoardContainer = styled('div', {
   variants: {

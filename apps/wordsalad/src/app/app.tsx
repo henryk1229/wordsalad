@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react';
 import { camelCase } from 'change-case';
 import GameLayer from './GameLayer';
 import HowToPlayModal from './modals/HowToPlayModal';
-
-const URL = 'http://localhost:3000/';
+import config from '../config';
 
 const AppContainer = styled('div', {
   width: '100%',
@@ -39,7 +38,7 @@ const initialSalad: () => DailySalad = () => ({
 const fetchDailySalad = async () => {
   return await axios({
     method: 'get',
-    url: URL,
+    url: config.apiUrl,
   }).then((result) => {
     const { salad } = result.data;
     const camelCased: DailySalad = Object.keys(salad).reduce(
