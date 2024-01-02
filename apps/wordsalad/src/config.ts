@@ -11,7 +11,9 @@ const env = envsafe(
       devDefault: 'http://localhost:3000',
       input: import.meta.env.VITE_API_URL,
     }),
-    RENDER_API_KEY: str(),
+    RENDER_API_KEY: str({
+      input: import.meta.env.RENDER_API_KEY,
+    }),
   },
   {
     env: import.meta.env,
