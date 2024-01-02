@@ -40,7 +40,7 @@ const fetchDailySalad = async () => {
     method: 'get',
     url: config.apiUrl,
     headers: {
-      authorization: `Bearar ${config.renderApiKey}`,
+      authorization: `Bearer ${config.renderApiKey}`,
     },
   }).then((result) => {
     const { salad } = result.data;

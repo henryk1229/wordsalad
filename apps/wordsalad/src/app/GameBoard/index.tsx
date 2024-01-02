@@ -120,7 +120,7 @@ const spellCheckWord = async (wordArray: string[]): Promise<boolean> => {
     method: 'POST',
     url: URL,
     headers: {
-      authorization: `Bearar ${config.renderApiKey}`,
+      authorization: `Bearer ${config.renderApiKey}`,
     },
     data: {
       submittedWord,
