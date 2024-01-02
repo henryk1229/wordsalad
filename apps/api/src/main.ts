@@ -5,6 +5,8 @@ import { spellcheckWord } from './spellchecker';
 import { query } from './db';
 import { saladGenerator } from './salad-calculator';
 import { wordGenerator } from './word-generator';
+import cron from 'node-cron';
+import axios from 'axios';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
@@ -78,3 +80,26 @@ app.post('/generate-salad', async (_req, res) => {
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
 });
+
+// cron job that hits api endpoint every day at midnight
+cron.schedule(
+  '* 0 * * 0-6',
+  () => {
+    axios
+      .post(`https://${host}:${port}/generate-salad`, null, {
+        headers: {
+          authorization: `Bearer ${config.renderApiKey}`,
+        },
+      })
+      .then((res) => {
+        const { initialWord } = res.data;
+        console.log(`generated wordsalad by with initial word: ${initialWord}`);
+      })
+      .catch((err) => {
+        console.log(`error: ${err.message}`);
+      });
+  },
+  {
+    name: 'generate-wordsalad',
+  }
+);
