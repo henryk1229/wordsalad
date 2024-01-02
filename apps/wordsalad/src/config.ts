@@ -12,6 +12,7 @@ const env = envsafe(
       input: import.meta.env.VITE_API_URL,
     }),
     RENDER_API_KEY: str({
+      devDefault: 'set-this-in-prod',
       input: import.meta.env.VITE_RENDER_API_KEY,
     }),
   },
