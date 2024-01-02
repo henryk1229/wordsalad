@@ -119,6 +119,9 @@ const spellCheckWord = async (wordArray: string[]): Promise<boolean> => {
   return await axios({
     method: 'POST',
     url: URL,
+    headers: {
+      authorization: `Bearar ${config.renderApiKey}`,
+    },
     data: {
       submittedWord,
     },
