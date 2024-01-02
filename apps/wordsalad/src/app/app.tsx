@@ -39,6 +39,9 @@ const fetchDailySalad = async () => {
   return await axios({
     method: 'get',
     url: config.apiUrl,
+    headers: {
+      authorization: `Bearar ${config.renderApiKey}`,
+    },
   }).then((result) => {
     const { salad } = result.data;
     const camelCased: DailySalad = Object.keys(salad).reduce(
