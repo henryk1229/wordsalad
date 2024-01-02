@@ -13,12 +13,20 @@ const app = express();
 
 app.use(
   cors({
-    origin: config.allowedOrigins,
+    origin: config.appUrl,
     preflightContinue: true,
     credentials: true,
   })
 );
 app.options('*', cors());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', config.appUrl); // update to match the domain you will make the request from
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
