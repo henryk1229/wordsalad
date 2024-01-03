@@ -3914,6 +3914,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/typo-js@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@types/typo-js@npm:1.2.2"
+  checksum: d7a3a7ea2ec7dda5edc10dd532bd5055ed02499ca4e0aa1d1769d79bca5c3f80e7b8e7c72bacb5a71b5a97b0aed69032c31f02e209a6c9511077f9169a873aee
+  languageName: node
+  linkType: hard
+
 "@types/ws@npm:^8.5.5":
   version: 8.5.8
   resolution: "@types/ws@npm:8.5.8"
@@ -4347,6 +4354,7 @@ __metadata:
     "@types/pg": ^8.10.9
     "@types/react": 18.2.24
     "@types/react-dom": 18.2.9
+    "@types/typo-js": ^1.2.2
     "@typescript-eslint/eslint-plugin": ^5.60.1
     "@typescript-eslint/parser": ^5.60.1
     "@vitejs/plugin-react": ~4.0.0

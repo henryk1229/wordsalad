@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const Typo = require('typo-js');
+import Typo from 'typo-js';
 
 const dictionary = new Typo('en_us');
 
