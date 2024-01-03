@@ -4365,6 +4365,7 @@ __metadata:
     change-case: ^5.3.0
     cors: ^2.8.5
     cypress: ^13.0.0
+    dictionary-en: ^4.0.0
     envalid: ^8.0.0
     envsafe: ^2.0.3
     eslint: ~8.46.0
@@ -4378,6 +4379,7 @@ __metadata:
     jest: ^29.4.1
     jest-environment-node: ^29.4.1
     jsdom: ~22.1.0
+    nodehun: ^3.0.2
     nx: 17.0.1
     pg: ^8.11.3
     prettier: ^2.6.2
@@ -6647,6 +6649,13 @@ __metadata:
     detect: bin/detect-port.js
     detect-port: bin/detect-port.js
   checksum: b48da9340481742547263d5d985e65d078592557863402ecf538511735e83575867e94f91fe74405ea19b61351feb99efccae7e55de9a151d5654e3417cea05b
+  languageName: node
+  linkType: hard
+
+"dictionary-en@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "dictionary-en@npm:4.0.0"
+  checksum: 98300011d410665d68ec03a209669ba203f087f812d9b12139a4aff795654235a70ed088a2e1c99fb26ff490b9ca4af64cd2f6e1744a530c34cef0f3086b4a73
   languageName: node
   linkType: hard
 
@@ -11039,6 +11048,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-addon-api@npm:*":
+  version: 7.0.0
+  resolution: "node-addon-api@npm:7.0.0"
+  dependencies:
+    node-gyp: latest
+  checksum: 4349465d737e284b280fc0e5fd2384f9379bca6b7f2a5a1460bea676ba5b90bf563e7d02a9254c35b9ed808641c81d9b4ca9e1da17d2849cd07727660b00b332
+  languageName: node
+  linkType: hard
+
 "node-addon-api@npm:^3.2.1":
   version: 3.2.1
   resolution: "node-addon-api@npm:3.2.1"
@@ -11105,6 +11123,16 @@ __metadata:
   version: 2.0.13
   resolution: "node-releases@npm:2.0.13"
   checksum: 17ec8f315dba62710cae71a8dad3cd0288ba943d2ece43504b3b1aa8625bf138637798ab470b1d9035b0545996f63000a8a926e0f6d35d0996424f8b6d36dda3
+  languageName: node
+  linkType: hard
+
+"nodehun@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "nodehun@npm:3.0.2"
+  dependencies:
+    node-addon-api: "*"
+    node-gyp: latest
+  checksum: eb50bd17dfea5d4fe35cae03d73695ddb5813025a52e02dc25d6fecb223c0b8733dc20d3b3ef05ab14cee55fcf09f76bfe3d0584800645909adb0005358d0917
   languageName: node
   linkType: hard
 

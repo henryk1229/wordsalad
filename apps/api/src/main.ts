@@ -42,9 +42,9 @@ app.get('/', async (_req, res) => {
   }
 });
 
-app.post('/spellcheck', (req, res) => {
+app.post('/spellcheck', async (req, res) => {
   const submittedWord = req.body.submittedWord;
-  const isValidWord = spellcheckWord(submittedWord);
+  const isValidWord = await spellcheckWord(submittedWord);
   res.send({ valid: isValidWord });
 });
 
