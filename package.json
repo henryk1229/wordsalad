@@ -9,7 +9,7 @@
     "build-client": "nx run wordsalad:build"
   },
   "engines": {
-    "node": "^16.14.0 || ^20.9.0"
+    "node": "^16.14.0 || ^20.0.0"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.3",
