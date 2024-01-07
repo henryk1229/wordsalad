@@ -13,7 +13,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: config.appUrl,
+    origin: (_, callback) => {
+      callback(null, config.allowedOrigins);
+    },
     preflightContinue: true,
     credentials: true,
   })
