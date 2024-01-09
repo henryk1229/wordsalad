@@ -133,7 +133,7 @@ const HowToPlayModal: React.FC<Props> = ({ open, onClose }) => {
           '@bp2': 'medium',
         }}
       >
-        Complete the WordSalad in four words
+        Complete a WordSalad in four words
       </ModalSubHeader>
       <ModalContent>
         <ul style={{ padding: '0px 0px 0px 16px', margin: '0px' }}>
@@ -147,12 +147,13 @@ const HowToPlayModal: React.FC<Props> = ({ open, onClose }) => {
             preceding word
           </li>
           <li style={{ margin: '8px' }}>
-            Each letter can be used only{' '}
+            A letter can be used only{' '}
             <span style={{ fontWeight: 600 }}>once</span> per WordSalad
           </li>
           <li style={{ margin: '8px' }}>
-            The <span style={{ fontWeight: 600 }}>number</span> next to each row
-            shows the remaining word combinations
+            The <span style={{ fontWeight: 600 }}>number</span> next to a layer
+            shows the number of words at that layer that can complete your
+            WordSalad
           </li>
         </ul>
       </ModalContent>
@@ -174,16 +175,31 @@ const HowToPlayModal: React.FC<Props> = ({ open, onClose }) => {
               letterSpacing: '1px',
             }}
           >
-            <span style={{ textDecoration: 'underline' }}>A</span>BCD
-            <span style={{ textDecoration: 'underline' }}>E</span>,{' '}
-            <span style={{ textDecoration: 'underline' }}>E</span>
-            FGH
-            <span style={{ textDecoration: 'underline' }}>I</span>,{' '}
-            <span style={{ textDecoration: 'underline' }}>I</span>
-            JKL
-            <span style={{ textDecoration: 'underline' }}>M</span>,{' '}
-            <span style={{ textDecoration: 'underline' }}>M</span>
-            LNOP
+            FRON
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              T
+            </span>
+            ,{' '}
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              T
+            </span>
+            HYM
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              E
+            </span>
+            ,{' '}
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              E
+            </span>
+            QUA
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              L
+            </span>
+            ,{' '}
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              L
+            </span>
+            ICKS
           </li>
           <li
             style={{
@@ -192,34 +208,31 @@ const HowToPlayModal: React.FC<Props> = ({ open, onClose }) => {
               letterSpacing: '1px',
             }}
           >
-            <span style={{ textDecoration: 'underline' }}>C</span>DEF
-            <span style={{ textDecoration: 'underline' }}>G</span>,{' '}
-            <span style={{ textDecoration: 'underline' }}>G</span>
-            HIJ
-            <span style={{ textDecoration: 'underline' }}>K</span>,{' '}
-            <span style={{ textDecoration: 'underline' }}>K</span>
-            LMN
-            <span style={{ textDecoration: 'underline' }}>O</span>,{' '}
-            <span style={{ textDecoration: 'underline' }}>O</span>
-            PQRS
-          </li>
-          <li
-            style={{
-              margin: '12px 8px',
-              fontWeight: 600,
-              letterSpacing: '1px',
-            }}
-          >
-            <span style={{ textDecoration: 'underline' }}>E</span>FGH
-            <span style={{ textDecoration: 'underline' }}>I</span>,{' '}
-            <span style={{ textDecoration: 'underline' }}>I</span>
-            JKL
-            <span style={{ textDecoration: 'underline' }}>M</span>,{' '}
-            <span style={{ textDecoration: 'underline' }}>M</span>
-            NOP
-            <span style={{ textDecoration: 'underline' }}>Q</span>,{' '}
-            <span style={{ textDecoration: 'underline' }}>Q</span>
-            RSTU
+            BIRT
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              H
+            </span>
+            ,{' '}
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              H
+            </span>
+            ONK
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              S
+            </span>
+            ,{' '}
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              S
+            </span>
+            WAM
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              P
+            </span>
+            ,{' '}
+            <span style={{ textDecoration: 'underline', color: '#217C7E' }}>
+              P
+            </span>
+            UDGY
           </li>
         </ul>
       </ModalContent>

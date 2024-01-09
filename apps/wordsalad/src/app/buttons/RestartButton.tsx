@@ -10,6 +10,7 @@ const StyledButton = styled('button', {
     opacity: 0.75,
     cursor: 'pointer',
   },
+  margin: '4px',
 });
 
 interface Props {
@@ -26,17 +27,15 @@ const RestartButton: React.FC<Props> = ({ disabled, restartGame }) => (
       ...(disabled ? { opacity: 0.5, cursor: 'not-allowed' } : null),
     }}
   >
-    <div style={{ marginLeft: '4px' }}>
-      <RestartIcon />
-    </div>
+    <RestartIcon />
   </StyledButton>
 );
 
 const RestartIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={26}
-    height={26}
+    width={28}
+    height={28}
     viewBox="0 0 24 24"
     fill="none"
     stroke="#9A3334"
