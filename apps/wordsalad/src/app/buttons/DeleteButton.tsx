@@ -10,6 +10,7 @@ const StyledButton = styled('button', {
     opacity: 0.75,
     cursor: 'pointer',
   },
+  margin: '4px',
 });
 
 interface Props {
