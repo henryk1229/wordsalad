@@ -80,7 +80,14 @@ const Header: React.FC = () => (
         '@bp2': 'medium',
       }}
     >
-      by hhk
+      <a
+        href="mailto:henryk1229@gmail.com"
+        target="_blank"
+        rel="noreferrer"
+        style={{ color: 'black', textDecoration: 'none' }}
+      >
+        by hhk
+      </a>
     </Chip>
   </HeaderContainer>
 );
