@@ -9,7 +9,6 @@ import { checkSubmitConditions, makeCurrentWord } from './utils';
 import StatsDisplay from '../StatsDisplay';
 import DeleteButton from '../buttons/DeleteButton';
 import EnterButton from '../buttons/EnterButton';
-import RestartButton from '../buttons/RestartButton';
 import { useWatchGameFlow } from '../../hooks/useWatchGameFlow';
 import { styled } from '../../styles';
 import config from '../../config';
