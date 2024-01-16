@@ -9,7 +9,6 @@ import { checkSubmitConditions, makeCurrentWord } from './utils';
 import StatsDisplay from '../StatsDisplay';
 import DeleteButton from '../buttons/DeleteButton';
 import EnterButton from '../buttons/EnterButton';
-import RestartButton from '../buttons/RestartButton';
 import { useWatchGameFlow } from '../../hooks/useWatchGameFlow';
 import { styled } from '../../styles';
 import config from '../../config';
@@ -373,9 +372,10 @@ const GameBoard: React.FC<Props> = ({
           '@bp3': 'large',
         }}
       >
-        {/* TODO - rm empty div for spacing  */}
-        <div style={{ width: '40px', height: '40px' }} />
-        <RestartButton restartGame={restartGame} disabled={disableReset} />
+        <EnterButton
+          disabled={disableSubmitDelete}
+          onClick={handleSubmitWord}
+        />
         <CurrentWord
           currentWord={currentWord}
           isLastWord={isLastTurn}
@@ -384,10 +384,6 @@ const GameBoard: React.FC<Props> = ({
         <DeleteButton
           disabled={disableSubmitDelete}
           onClick={clearLetterFromCurrentWord}
-        />
-        <EnterButton
-          disabled={disableSubmitDelete}
-          onClick={handleSubmitWord}
         />
       </SpringCaddy>
     </BoardContainer>
