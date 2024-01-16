@@ -373,9 +373,10 @@ const GameBoard: React.FC<Props> = ({
           '@bp3': 'large',
         }}
       >
-        {/* TODO - rm empty div for spacing  */}
-        <div style={{ width: '40px', height: '40px' }} />
-        <RestartButton restartGame={restartGame} disabled={disableReset} />
+        <EnterButton
+          disabled={disableSubmitDelete}
+          onClick={handleSubmitWord}
+        />
         <CurrentWord
           currentWord={currentWord}
           isLastWord={isLastTurn}
@@ -384,10 +385,6 @@ const GameBoard: React.FC<Props> = ({
         <DeleteButton
           disabled={disableSubmitDelete}
           onClick={clearLetterFromCurrentWord}
-        />
-        <EnterButton
-          disabled={disableSubmitDelete}
-          onClick={handleSubmitWord}
         />
       </SpringCaddy>
     </BoardContainer>
