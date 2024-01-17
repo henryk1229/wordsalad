@@ -3,6 +3,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { retrieveLSData } from '../GameLayer';
 import { DailySalad } from '../app';
+import ShareButton from '../buttons/ShareButton';
 
 const ModalHeader = styled('h3', {
   display: 'flex',
@@ -242,6 +243,7 @@ const StatsModal: React.FC<Props> = ({
           <div>Max Streak</div>
         </ModalContent>
       </ModalContentWrapper>
+      <ShareButton onClick={() => null} />
     </Modal>
   );
 };

@@ -2,32 +2,35 @@ import { styled } from '@stitches/react';
 
 const StyledButton = styled('button', {
   border: 'none',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
   backgroundColor: '#217C7E',
   '&:hover': {
     opacity: 0.75,
     cursor: 'pointer',
   },
-  margin: '4px 0px',
+  margin: '16px',
+  borderRadius: '30px',
+});
+
+const ButtonContent = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  margin: '8px 24px',
+  color: 'white',
+  fontSize: 'large',
 });
 
 interface Props {
-  disabled: boolean;
   onClick: () => void;
 }
 
 // renders a stylized restart button
-const ShareButton: React.FC<Props> = ({ disabled, onClick }) => (
-  <StyledButton
-    onClick={onClick}
-    disabled={disabled}
-    style={{
-      ...(disabled ? { opacity: 0.5, cursor: 'not-allowed' } : null),
-    }}
-  >
-    <ShareIcon />
+const ShareButton: React.FC<Props> = ({ onClick }) => (
+  <StyledButton onClick={onClick}>
+    <ButtonContent>
+      <div style={{ marginRight: '8px' }}>Share</div>
+      <ShareIcon />
+    </ButtonContent>
   </StyledButton>
 );
 
@@ -38,8 +41,8 @@ const ShareIcon = () => (
     height={28}
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#9A3334"
-    strokeWidth="2"
+    stroke="white"
+    strokeWidth="1"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
