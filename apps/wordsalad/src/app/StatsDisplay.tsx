@@ -92,6 +92,7 @@ const StatsDisplay: React.FC<Props> = ({
       <StatsModal
         saladDate={saladDate}
         saladNumber={saladNumber}
+        attempts={attempts.length}
         open={statsModalOpen}
         isWordSalad={isWordSalad}
         isLostGame={isLostGame}

@@ -21,12 +21,27 @@ const ButtonContent = styled('div', {
 });
 
 interface Props {
-  onClick: () => void;
+  saladNumber: number;
+  attempts: number;
 }
 
+// TODO - display toast
+const handleCopyResults = async (saladNumber: number, attempts: number) => {
+  const text = `WordSalad ${saladNumber} ${attempts}/7`;
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    const message =
+      error && typeof error === 'object' && 'message' in error
+        ? error.message
+        : null;
+    console.error(message);
+  }
+};
+
 // renders a stylized restart button
-const ShareButton: React.FC<Props> = ({ onClick }) => (
-  <StyledButton onClick={onClick}>
+const ShareButton: React.FC<Props> = ({ saladNumber, attempts }) => (
+  <StyledButton onClick={() => handleCopyResults(saladNumber, attempts)}>
     <ButtonContent>
       <div style={{ marginRight: '8px' }}>Share</div>
       <ShareIcon />

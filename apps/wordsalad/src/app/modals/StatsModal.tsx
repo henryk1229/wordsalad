@@ -100,6 +100,7 @@ export type SaladData = Pick<DailySalad, 'date' | 'saladNumber'>;
 interface Props {
   saladDate: string;
   saladNumber: number;
+  attempts: number;
   open: boolean;
   isWordSalad: boolean;
   isLostGame: boolean;
@@ -152,6 +153,7 @@ const formatDate = (date: string) => {
 const StatsModal: React.FC<Props> = ({
   saladDate,
   saladNumber,
+  attempts,
   open,
   isLostGame,
   isWordSalad,
@@ -243,7 +245,7 @@ const StatsModal: React.FC<Props> = ({
           <div>Max Streak</div>
         </ModalContent>
       </ModalContentWrapper>
-      <ShareButton onClick={() => null} />
+      <ShareButton saladNumber={saladNumber} attempts={attempts} />
     </Modal>
   );
 };
