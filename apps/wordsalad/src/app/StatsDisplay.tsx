@@ -3,7 +3,7 @@ import { Tooltip } from 'react-tooltip';
 import StatsModal from './modals/StatsModal';
 import HelpButton from './buttons/HelpButton';
 import StatsButton from './buttons/StatsButtton';
-import RankingsModal from './modals/RankingsModal';
+// import RankingsModal from './modals/RankingsModal';
 
 const DisplayContainer = styled('div', {
   display: 'flex',
@@ -47,6 +47,7 @@ interface Props {
   setRankingsModalOpen: (bool: boolean) => void;
   setStatsModalOpen: (bool: boolean) => void;
   setHTPModalOpen: (bool: boolean) => void;
+  handleShareResults: () => Promise<void>;
 }
 
 const StatsDisplay: React.FC<Props> = ({
@@ -61,17 +62,19 @@ const StatsDisplay: React.FC<Props> = ({
   setRankingsModalOpen,
   setStatsModalOpen,
   setHTPModalOpen,
+  handleShareResults,
 }) => {
   return (
     <DisplayContainer>
       <DisplayContent>
         <RankContainer>
-          <div
+          {/* <div
             style={{ margin: '4px', cursor: 'pointer', width: '180px' }}
             onClick={() => setRankingsModalOpen(true)}
           >
             Current Rank: <span style={{ fontWeight: 'bold' }}>{ranking}</span>
-          </div>
+          </div> */}
+          <AttemptsDisplay attempts={attempts} />
           <div style={{ margin: '4px' }}>
             <StatsButton onClick={() => setStatsModalOpen(true)} />
           </div>
@@ -79,24 +82,24 @@ const StatsDisplay: React.FC<Props> = ({
             <HelpButton onClick={() => setHTPModalOpen(true)} />
           </div>
         </RankContainer>
-        <AttemptsDisplay attempts={attempts} />
       </DisplayContent>
-      <RankingsModal
+      {/* <RankingsModal
         attempts={attempts}
         ranking={ranking}
         open={rankingsModalOpen}
         isWordSalad={isWordSalad}
         isLostGame={isLostGame}
         onClose={() => setRankingsModalOpen(false)}
-      />
+      /> */}
       <StatsModal
         saladDate={saladDate}
         saladNumber={saladNumber}
-        attempts={attempts.length}
+        attempts={attempts}
         open={statsModalOpen}
         isWordSalad={isWordSalad}
         isLostGame={isLostGame}
         onClose={() => setStatsModalOpen(false)}
+        handleShareResults={handleShareResults}
       />
     </DisplayContainer>
   );
@@ -117,7 +120,6 @@ const AttemptsDisplay: React.FC<AttemptsDisplayProps> = ({ attempts }) => {
     <div
       style={{
         display: 'flex',
-        margin: '0px 32px',
         justifyContent: 'space-evenly',
       }}
     >

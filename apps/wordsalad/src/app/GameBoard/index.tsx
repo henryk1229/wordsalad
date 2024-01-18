@@ -139,6 +139,7 @@ interface Props {
   restartGame: () => void;
   setHTPModalOpen: (bool: boolean) => void;
   displayToast: () => void;
+  handleShareResults: () => Promise<void>;
 }
 
 const GameBoard: React.FC<Props> = ({
@@ -153,6 +154,7 @@ const GameBoard: React.FC<Props> = ({
   restartGame,
   setHTPModalOpen,
   displayToast,
+  handleShareResults,
 }) => {
   // control display of stats modal
   const [statsModalOpen, setStatsModalOpen] = useState<boolean>(false);
@@ -333,6 +335,7 @@ const GameBoard: React.FC<Props> = ({
           setRankingsModalOpen={setRankingsModalOpen}
           setStatsModalOpen={setStatsModalOpen}
           setHTPModalOpen={setHTPModalOpen}
+          handleShareResults={handleShareResults}
         />
       </StatsDisplayContainer>
       <BoardWrapper

@@ -4,6 +4,9 @@ import { DailySalad } from './app';
 import { makeSolutionSets } from './utils';
 import toast, { Toaster } from 'react-hot-toast';
 
+const SALAD_EMOJI = '🥗';
+const TOMATO_EMOJI = '🍅';
+
 export type UserStats = {
   played: number;
   gamesWon: number;
@@ -232,6 +235,39 @@ const GameLayer: React.FC<Props> = ({ dailySalad, setHTPModalOpen }) => {
     );
   };
 
+  const handleShareResults = async () => {
+    let emojiString = '';
+    allAttempts.forEach((att, idx) =>
+      idx === allAttempts.length - 1
+        ? (emojiString += SALAD_EMOJI)
+        : (emojiString += TOMATO_EMOJI)
+    );
+    const text = `WordSalad ${saladNumber} ${allAttempts.length}/7\n\n${emojiString}`;
+    try {
+      await navigator.clipboard.writeText(text);
+      toast(
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ margin: '8px' }}>Results copied to clipboard</div>
+        </div>,
+        {
+          id: 'copyResults',
+        }
+      );
+    } catch (error) {
+      const message =
+        error && typeof error === 'object' && 'message' in error
+          ? error.message
+          : null;
+      console.error(message);
+    }
+  };
+
   return (
     <>
       <GameBoard
@@ -247,6 +283,7 @@ const GameLayer: React.FC<Props> = ({ dailySalad, setHTPModalOpen }) => {
         restartGame={restartGame}
         setHTPModalOpen={setHTPModalOpen}
         displayToast={displayToast}
+        handleShareResults={handleShareResults}
       />
       <Toaster
         containerStyle={{ top: '120px' }}

@@ -100,11 +100,12 @@ export type SaladData = Pick<DailySalad, 'date' | 'saladNumber'>;
 interface Props {
   saladDate: string;
   saladNumber: number;
-  attempts: number;
+  attempts: string[][];
   open: boolean;
   isWordSalad: boolean;
   isLostGame: boolean;
   onClose: () => void;
+  handleShareResults: () => Promise<void>;
 }
 
 const getSuffix = (lastDigit: string) => {
@@ -158,6 +159,7 @@ const StatsModal: React.FC<Props> = ({
   isLostGame,
   isWordSalad,
   onClose,
+  handleShareResults,
 }) => {
   const { storedStats: userStats } = retrieveLSData(saladNumber);
   const { played, gamesWon, currentStreak, maxStreak } = userStats;
@@ -245,7 +247,7 @@ const StatsModal: React.FC<Props> = ({
           <div>Max Streak</div>
         </ModalContent>
       </ModalContentWrapper>
-      <ShareButton saladNumber={saladNumber} attempts={attempts} />
+      <ShareButton onClick={handleShareResults} />
     </Modal>
   );
 };
