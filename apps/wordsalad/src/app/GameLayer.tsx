@@ -236,13 +236,18 @@ const GameLayer: React.FC<Props> = ({ dailySalad, setHTPModalOpen }) => {
   };
 
   const handleShareResults = async () => {
-    let emojiString = '';
-    allAttempts.forEach((att, idx) =>
-      idx === allAttempts.length - 1
-        ? (emojiString += SALAD_EMOJI)
-        : (emojiString += TOMATO_EMOJI)
-    );
-    const text = `WordSalad ${saladNumber} ${allAttempts.length}/7\n\n${emojiString}`;
+    const lastAttempt = allAttempts[allAttempts.length - 1];
+    const isWordSalad = lastAttempt.length === 4;
+    const emojiString = allAttempts
+      .map((_att, idx) => {
+        if (idx === allAttempts.length - 1) {
+          return isWordSalad ? SALAD_EMOJI : TOMATO_EMOJI;
+        }
+        return TOMATO_EMOJI;
+      })
+      .join('');
+    const numAttempts = isWordSalad ? allAttempts.length : 'X';
+    const text = `WordSalad ${saladNumber} ${numAttempts}/7\n${emojiString}`;
     try {
       await navigator.clipboard.writeText(text);
       toast(
