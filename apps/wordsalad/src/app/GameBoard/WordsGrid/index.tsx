@@ -97,7 +97,7 @@ const WordsGrid: React.FC<Props> = ({ playedWords, solutionSets }) => {
     from: { opacity: 0 },
     to: { opacity: 1 },
     config: {
-      duration: 1200,
+      duration: 1000,
       easing: easings.easeInBack,
     },
   });
@@ -107,6 +107,10 @@ const WordsGrid: React.FC<Props> = ({ playedWords, solutionSets }) => {
   return makeWordsGrid(playedWords).map((word: string[], wordIdx: number) => {
     const isPendingWord = !!word[0] && !word[1];
     const isLastPlayedWord = wordIdx === playedWords.length - 1;
+
+    const shouldShowBadge =
+      playedWords[0].length > 0 && wordIdx > playedWords.length - 1;
+    const setIdx = Math.abs(4 - wordIdx - solutionSets.length);
 
     return (
       <animated.div
@@ -133,16 +137,18 @@ const WordsGrid: React.FC<Props> = ({ playedWords, solutionSets }) => {
                   isAnchorTile={[0].includes(letterIdx)}
                 />
               ))}
-              {isPendingWord && (
+              {shouldShowBadge && (
                 <Badge
-                  style={{ ...spring }}
+                  style={spring}
                   size={{
                     '@initial': 'small',
                     '@bp1': 'small',
                     '@bp2': 'medium',
                   }}
                 >
-                  <BadgeContents>{solutionSets[0].size ?? '0'}</BadgeContents>
+                  <BadgeContents>
+                    {solutionSets[setIdx]?.size ?? '0'}
+                  </BadgeContents>
                 </Badge>
               )}
             </div>
