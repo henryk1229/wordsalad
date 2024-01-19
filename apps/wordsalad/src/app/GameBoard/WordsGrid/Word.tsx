@@ -4,6 +4,8 @@ import Tile from './Tile';
 import { SpringValue, animated } from '@react-spring/web';
 import { styled } from '../../../styles';
 
+const SALAD_EMOJI = '🥗';
+
 const Badge = styled('div', {
   display: 'flex',
   justifyContent: 'center',
@@ -39,10 +41,9 @@ const BadgeContents = styled(animated.div, {
 interface Props {
   word: string[];
   solutionSets: Set<string>[];
-  setIdx: number;
+  wordIdx: number;
+  numWordsPlayed: number;
   isLastPlayedWord: boolean;
-  isLastTurn: boolean;
-  isPendingWord: boolean;
   spring: {
     opacity: SpringValue<number>;
   };
@@ -53,20 +54,31 @@ interface Props {
 
 const Word: React.FC<Props> = ({
   isLastPlayedWord,
+  numWordsPlayed,
   solutionSets,
-  setIdx,
+  wordIdx,
   word,
-  isLastTurn,
-  isPendingWord,
   trails,
   spring,
 }) => {
+  const isPendingWord = !!word[0] && !word[1];
+
+  const playedWordsBadges = Array.from({ length: numWordsPlayed }, (_v) => '');
+  const badgeContents = [
+    ...playedWordsBadges,
+    ...solutionSets.map((set) => set.size),
+  ];
+
   return (
     <div
       style={{ display: 'flex', margin: '12px 0px 0px', alignItems: 'center' }}
     >
       {isLastPlayedWord ? (
-        <LastPlayedWord word={word} trails={trails} isLastTurn={isLastTurn} />
+        <LastPlayedWord
+          word={word}
+          trails={trails}
+          isLastTurn={numWordsPlayed >= 3}
+        />
       ) : (
         word.map((letter, letterIdx) => (
           <Tile
@@ -77,16 +89,8 @@ const Word: React.FC<Props> = ({
           />
         ))
       )}
-      <Badge
-        size={{
-          '@initial': 'small',
-          '@bp1': 'small',
-          '@bp2': 'medium',
-        }}
-      >
-        <BadgeContents style={spring}>
-          {solutionSets[setIdx]?.size ?? '0'}
-        </BadgeContents>
+      <Badge size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}>
+        <BadgeContents style={spring}>{badgeContents[wordIdx]}</BadgeContents>
       </Badge>
     </div>
   );

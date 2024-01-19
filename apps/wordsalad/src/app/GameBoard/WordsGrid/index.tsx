@@ -65,34 +65,23 @@ const WordsGrid: React.FC<Props> = ({ playedWords, solutionSets }) => {
 
   useChain([trailsRef, springRef]);
 
-  return makeWordsGrid(playedWords).map((word: string[], wordIdx: number) => {
-    const isPendingWord = !!word[0] && !word[1];
-    const isLastPlayedWord = wordIdx === playedWords.length - 1;
-
-    const setIdx = Math.abs(4 - wordIdx - solutionSets.length);
-
-    return (
-      <animated.div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-        key={wordIdx}
-      >
-        <Word
-          isLastPlayedWord={isLastPlayedWord}
-          solutionSets={solutionSets}
-          setIdx={setIdx}
-          word={word}
-          isLastTurn={playedWords.length > 3}
-          isPendingWord={isPendingWord}
-          trails={trails}
-          spring={spring}
-        />
-        {wordIdx !== 3 && <GuideLine />}
-      </animated.div>
-    );
-  });
+  return makeWordsGrid(playedWords).map((word: string[], wordIdx: number) => (
+    <animated.div
+      style={{ display: 'flex', flexDirection: 'column' }}
+      key={wordIdx}
+    >
+      <Word
+        isLastPlayedWord={wordIdx === playedWords.length - 1}
+        solutionSets={solutionSets}
+        wordIdx={wordIdx}
+        word={word}
+        numWordsPlayed={playedWords.length}
+        trails={trails}
+        spring={spring}
+      />
+      {wordIdx !== 3 && <GuideLine />}
+    </animated.div>
+  ));
 };
 
 export default WordsGrid;
