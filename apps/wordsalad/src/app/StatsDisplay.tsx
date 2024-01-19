@@ -47,6 +47,7 @@ interface Props {
   setRankingsModalOpen: (bool: boolean) => void;
   setStatsModalOpen: (bool: boolean) => void;
   setHTPModalOpen: (bool: boolean) => void;
+  handleShareResults: () => Promise<void>;
 }
 
 const StatsDisplay: React.FC<Props> = ({
@@ -61,6 +62,7 @@ const StatsDisplay: React.FC<Props> = ({
   setRankingsModalOpen,
   setStatsModalOpen,
   setHTPModalOpen,
+  handleShareResults,
 }) => {
   return (
     <DisplayContainer>
@@ -92,10 +94,12 @@ const StatsDisplay: React.FC<Props> = ({
       <StatsModal
         saladDate={saladDate}
         saladNumber={saladNumber}
+        attempts={attempts}
         open={statsModalOpen}
         isWordSalad={isWordSalad}
         isLostGame={isLostGame}
         onClose={() => setStatsModalOpen(false)}
+        handleShareResults={handleShareResults}
       />
     </DisplayContainer>
   );

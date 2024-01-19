@@ -3,6 +3,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { retrieveLSData } from '../GameLayer';
 import { DailySalad } from '../app';
+import ShareButton from '../buttons/ShareButton';
 
 const ModalHeader = styled('h3', {
   display: 'flex',
@@ -99,10 +100,12 @@ export type SaladData = Pick<DailySalad, 'date' | 'saladNumber'>;
 interface Props {
   saladDate: string;
   saladNumber: number;
+  attempts: string[][];
   open: boolean;
   isWordSalad: boolean;
   isLostGame: boolean;
   onClose: () => void;
+  handleShareResults: () => Promise<void>;
 }
 
 const getSuffix = (lastDigit: string) => {
@@ -151,10 +154,12 @@ const formatDate = (date: string) => {
 const StatsModal: React.FC<Props> = ({
   saladDate,
   saladNumber,
+  attempts,
   open,
   isLostGame,
   isWordSalad,
   onClose,
+  handleShareResults,
 }) => {
   const { storedStats: userStats } = retrieveLSData(saladNumber);
   const { played, gamesWon, currentStreak, maxStreak } = userStats;
@@ -242,6 +247,7 @@ const StatsModal: React.FC<Props> = ({
           <div>Max Streak</div>
         </ModalContent>
       </ModalContentWrapper>
+      <ShareButton onClick={handleShareResults} />
     </Modal>
   );
 };

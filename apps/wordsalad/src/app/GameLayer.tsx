@@ -4,6 +4,9 @@ import { DailySalad } from './app';
 import { makeSolutionSets } from './utils';
 import toast, { Toaster } from 'react-hot-toast';
 
+const SALAD_EMOJI = '🥗';
+const TOMATO_EMOJI = '🍅';
+
 export type UserStats = {
   played: number;
   gamesWon: number;
@@ -232,6 +235,47 @@ const GameLayer: React.FC<Props> = ({ dailySalad, setHTPModalOpen }) => {
     );
   };
 
+  const handleShareResults = async () => {
+    const lastAttempt = allAttempts[allAttempts.length - 1];
+    const isWordSalad = lastAttempt.length === 4;
+    const emojiString = allAttempts
+      .map((_att, idx) => {
+        if (idx === allAttempts.length - 1) {
+          return isWordSalad ? SALAD_EMOJI : TOMATO_EMOJI;
+        }
+        return TOMATO_EMOJI;
+      })
+      .join('');
+    const numAttempts = isWordSalad ? allAttempts.length : 'X';
+    const rankingText = isWordSalad
+      ? ` - ${getRanking({ numAttempts: allAttempts.length })}`
+      : '';
+    const text = `WordSalad ${saladNumber} ${numAttempts}/7${rankingText}\n${emojiString}`;
+    try {
+      await navigator.clipboard.writeText(text);
+      toast(
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ margin: '8px' }}>Results copied to clipboard</div>
+        </div>,
+        {
+          id: 'copyResults',
+        }
+      );
+    } catch (error) {
+      const message =
+        error && typeof error === 'object' && 'message' in error
+          ? error.message
+          : null;
+      console.error(message);
+    }
+  };
+
   return (
     <>
       <GameBoard
@@ -247,6 +291,7 @@ const GameLayer: React.FC<Props> = ({ dailySalad, setHTPModalOpen }) => {
         restartGame={restartGame}
         setHTPModalOpen={setHTPModalOpen}
         displayToast={displayToast}
+        handleShareResults={handleShareResults}
       />
       <Toaster
         containerStyle={{ top: '120px' }}
