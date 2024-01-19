@@ -3,7 +3,7 @@ import { Tooltip } from 'react-tooltip';
 import StatsModal from './modals/StatsModal';
 import HelpButton from './buttons/HelpButton';
 import StatsButton from './buttons/StatsButtton';
-// import RankingsModal from './modals/RankingsModal';
+import RankingsModal from './modals/RankingsModal';
 
 const DisplayContainer = styled('div', {
   display: 'flex',
@@ -68,13 +68,12 @@ const StatsDisplay: React.FC<Props> = ({
     <DisplayContainer>
       <DisplayContent>
         <RankContainer>
-          {/* <div
+          <div
             style={{ margin: '4px', cursor: 'pointer', width: '180px' }}
             onClick={() => setRankingsModalOpen(true)}
           >
             Current Rank: <span style={{ fontWeight: 'bold' }}>{ranking}</span>
-          </div> */}
-          <AttemptsDisplay attempts={attempts} />
+          </div>
           <div style={{ margin: '4px' }}>
             <StatsButton onClick={() => setStatsModalOpen(true)} />
           </div>
@@ -82,15 +81,16 @@ const StatsDisplay: React.FC<Props> = ({
             <HelpButton onClick={() => setHTPModalOpen(true)} />
           </div>
         </RankContainer>
+        <AttemptsDisplay attempts={attempts} />
       </DisplayContent>
-      {/* <RankingsModal
+      <RankingsModal
         attempts={attempts}
         ranking={ranking}
         open={rankingsModalOpen}
         isWordSalad={isWordSalad}
         isLostGame={isLostGame}
         onClose={() => setRankingsModalOpen(false)}
-      /> */}
+      />
       <StatsModal
         saladDate={saladDate}
         saladNumber={saladNumber}
@@ -120,6 +120,7 @@ const AttemptsDisplay: React.FC<AttemptsDisplayProps> = ({ attempts }) => {
     <div
       style={{
         display: 'flex',
+        margin: '0px 32px',
         justifyContent: 'space-evenly',
       }}
     >
