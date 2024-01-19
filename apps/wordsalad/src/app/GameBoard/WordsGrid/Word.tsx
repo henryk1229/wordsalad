@@ -4,7 +4,29 @@ import Tile from './Tile';
 import { SpringValue, animated } from '@react-spring/web';
 import { styled } from '../../../styles';
 
-const SALAD_EMOJI = '🥗';
+const SALAD_EMOJI = (
+  <span role="img" aria-label="cucumber" style={{ fontSize: '18px' }}>
+    🥗
+  </span>
+);
+const CUKE_EMOJI = (
+  <span role="img" aria-label="cucumber" style={{ fontSize: '18px' }}>
+    🥒
+  </span>
+);
+const GREENS_EMOJI = (
+  <span role="img" aria-label="cucumber" style={{ fontSize: '18px' }}>
+    🥬
+  </span>
+);
+
+const BELL_PEPPER_EMOJI = (
+  <span role="img" aria-label="cucumber" style={{ fontSize: '18px' }}>
+    🫑
+  </span>
+);
+
+const INGREDIENTS = [GREENS_EMOJI, CUKE_EMOJI, BELL_PEPPER_EMOJI, SALAD_EMOJI];
 
 const Badge = styled('div', {
   display: 'flex',
@@ -63,11 +85,17 @@ const Word: React.FC<Props> = ({
 }) => {
   const isPendingWord = !!word[0] && !word[1];
 
-  const playedWordsBadges = Array.from({ length: numWordsPlayed }, (_v) => '');
+  const playedWordsBadges = Array.from(
+    { length: numWordsPlayed },
+    (_v, i) => INGREDIENTS[i]
+  );
   const badgeContents = [
     ...playedWordsBadges,
     ...solutionSets.map((set) => set.size),
   ];
+
+  const shouldApplySpring =
+    numWordsPlayed !== 4 ? wordIdx >= numWordsPlayed - 1 : false;
 
   return (
     <div
@@ -90,7 +118,9 @@ const Word: React.FC<Props> = ({
         ))
       )}
       <Badge size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}>
-        <BadgeContents style={spring}>{badgeContents[wordIdx]}</BadgeContents>
+        <BadgeContents style={{ ...(shouldApplySpring && { ...spring }) }}>
+          {badgeContents[wordIdx]}
+        </BadgeContents>
       </Badge>
     </div>
   );
