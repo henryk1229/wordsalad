@@ -85,13 +85,19 @@ const Word: React.FC<Props> = ({
 }) => {
   const isPendingWord = !!word[0] && !word[1];
 
-  const playedWordsBadges = Array.from(
-    { length: numWordsPlayed },
-    (_v, i) => INGREDIENTS[i]
+  // display emoji or "-" if the word is not a salad
+  const playedWordsBadges = Array.from({ length: numWordsPlayed }, (_v, i) =>
+    i === numWordsPlayed - 1
+      ? solutionSets[0]?.size === 0
+        ? '-'
+        : INGREDIENTS[i]
+      : INGREDIENTS[i]
   );
+
+  // display emojis + remaining solution numbers
   const badgeContents = [
     ...playedWordsBadges,
-    ...solutionSets.map((set) => set.size),
+    ...solutionSets.map((set) => (set.size === 0 ? '-' : set.size)),
   ];
 
   const shouldApplySpring =
