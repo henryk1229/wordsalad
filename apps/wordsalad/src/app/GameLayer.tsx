@@ -247,8 +247,10 @@ const GameLayer: React.FC<Props> = ({ dailySalad, setHTPModalOpen }) => {
       })
       .join('');
     const numAttempts = isWordSalad ? allAttempts.length : 'X';
-    const ranking = getRanking({ numAttempts: allAttempts.length });
-    const text = `WordSalad ${saladNumber} ${numAttempts}/7 - ${ranking}\n${emojiString}`;
+    const rankingText = isWordSalad
+      ? ` - ${getRanking({ numAttempts: allAttempts.length })}`
+      : '';
+    const text = `WordSalad ${saladNumber} ${numAttempts}/7${rankingText}\n${emojiString}`;
     try {
       await navigator.clipboard.writeText(text);
       toast(
