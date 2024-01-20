@@ -6,6 +6,7 @@ import { camelCase } from 'change-case';
 import GameLayer from './GameLayer';
 import HowToPlayModal from './modals/HowToPlayModal';
 import config from '../config';
+import Footer from './Footer';
 
 const AppContainer = styled('div', {
   width: '100%',
@@ -85,6 +86,7 @@ export function App() {
         setHTPModalOpen={setHTPModalOpen}
       />
       <HowToPlayModal open={howToPlayModalOpen} onClose={closeModal} />
+      <Footer />
     </AppContainer>
   );
 }
