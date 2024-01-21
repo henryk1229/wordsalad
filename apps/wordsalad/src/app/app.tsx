@@ -86,7 +86,6 @@ export function App() {
         setHTPModalOpen={setHTPModalOpen}
       />
       <HowToPlayModal open={howToPlayModalOpen} onClose={closeModal} />
-      <Footer />
     </AppContainer>
   );
 }

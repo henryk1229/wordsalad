@@ -4,6 +4,7 @@ import { Modal } from 'react-responsive-modal';
 import { retrieveLSData } from '../GameLayer';
 import { DailySalad } from '../app';
 import ShareButton from '../buttons/ShareButton';
+import Footer from '../Footer';
 
 const ModalHeader = styled('h3', {
   display: 'flex',
@@ -248,6 +249,7 @@ const StatsModal: React.FC<Props> = ({
         </ModalContent>
       </ModalContentWrapper>
       <ShareButton onClick={handleShareResults} />
+      <Footer />
     </Modal>
   );
 };
