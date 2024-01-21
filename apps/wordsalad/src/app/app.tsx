@@ -6,7 +6,6 @@ import { camelCase } from 'change-case';
 import GameLayer from './GameLayer';
 import HowToPlayModal from './modals/HowToPlayModal';
 import config from '../config';
-import Footer from './Footer';
 
 const AppContainer = styled('div', {
   width: '100%',
