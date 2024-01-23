@@ -4,6 +4,7 @@ import config from './config';
 import { spellcheckWord } from './spellchecker';
 import { query } from './db';
 import { generateWordSalad } from './salad-calculator';
+import { cronJob } from './cron-job';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
@@ -79,3 +80,6 @@ app.post('/update-salad', async (_req, res) => {
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
 });
+
+// start cron job that auto generates the daily salad
+cronJob.start();
