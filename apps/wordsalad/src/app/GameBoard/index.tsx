@@ -10,6 +10,7 @@ import StatsDisplay from '../StatsDisplay';
 import DeleteButton from '../buttons/DeleteButton';
 import EnterButton from '../buttons/EnterButton';
 import { useWatchGameFlow } from '../../hooks/useWatchGameFlow';
+import RestartButton from '../buttons/RestartButton';
 import { styled } from '../../styles';
 import config from '../../config';
 
@@ -70,10 +71,11 @@ const StatsDisplayContainer = styled('div', {
   display: 'flex',
   fontSize: '18px',
   justifyContent: 'center',
+  alignItems: 'center',
   variants: {
     size: {
       medium: {
-        margin: '8px 100px 0px',
+        margin: '8px 0px 0px',
         justifyContent: 'flex-end',
       },
     },
@@ -337,6 +339,7 @@ const GameBoard: React.FC<Props> = ({
           setHTPModalOpen={setHTPModalOpen}
           handleShareResults={handleShareResults}
         />
+        <RestartButton restartGame={restartGame} disabled={disableReset} />
       </StatsDisplayContainer>
       <BoardWrapper
         className="boardWrapper"
