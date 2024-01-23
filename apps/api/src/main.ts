@@ -82,5 +82,4 @@ app.listen(port, host, () => {
 });
 
 // start cron job that auto generates the daily salad
-// cronJob.start();
 scheduleCronAndLogs();
