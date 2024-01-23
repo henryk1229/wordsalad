@@ -391,7 +391,6 @@ const GameBoard: React.FC<Props> = ({
           disabled={disableSubmitDelete}
           onClick={clearLetterFromCurrentWord}
         />
-        {/* <div style={{ width: '40px', height: '40px' }} /> */}
       </SpringCaddy>
     </BoardContainer>
   );
