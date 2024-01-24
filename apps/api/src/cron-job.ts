@@ -2,6 +2,9 @@ import cron from 'node-cron';
 import axios from 'axios';
 import config from './config';
 
+const host = config.railwayInternalHost ?? 'localhost';
+const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+
 const SCHEDULE = '* 0 * * 0-6';
 
 export const scheduleCronAndLogs = () => {
@@ -15,7 +18,7 @@ export const scheduleCronAndLogs = () => {
     SCHEDULE,
     () => {
       axios
-        .post(`${config.apiUrl}/generate-salad`)
+        .post(`http://${host}:${port}/generate-salad`)
         .then((response) => {
           console.log('GENERATED SALAD:', response?.data?.initialWord);
         })
