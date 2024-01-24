@@ -11,7 +11,7 @@ type AppConfig = {
   maxPoolSize: number;
   allowedOrigins: string[];
   port: number;
-  apiUrl: string;
+  railwayInternalHost: string;
 };
 
 const env = envalid.cleanEnv(process.env, {
@@ -23,7 +23,7 @@ const env = envalid.cleanEnv(process.env, {
   MIN_POOL_SIZE: num({ default: 1 }),
   MAX_POOL_SIZE: num({ default: 20 }),
   PORT: num({ default: 8001 }),
-  API_URL: str(),
+  RAILWAY_INTERNAL_HOST: str(),
 });
 
 const config: AppConfig = {
@@ -36,7 +36,7 @@ const config: AppConfig = {
   maxPoolSize: env.MAX_POOL_SIZE,
   allowedOrigins: env.ALLOWED_ORIGINS.split(','),
   port: env.PORT,
-  apiUrl: env.API_URL,
+  railwayInternalHost: env.RAILWAY_INTERNAL_HOST,
 };
 
 export default config;
