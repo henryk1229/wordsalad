@@ -1,4 +1,4 @@
-import { make_word_salad } from 'salad_calculator';
+import { make_word_salad } from 'wordsalad-calculator';
 import { query } from './db';
 import { wordGenerator } from './word-generator';
 
