@@ -4397,7 +4397,6 @@ __metadata:
     react-hot-toast: ^2.4.1
     react-responsive-modal: ^6.4.2
     react-tooltip: ^5.25.0
-    salad_calculator: ^0.1.4
     sass: ^1.55.0
     ts-jest: ^29.1.0
     ts-node: 10.9.1
@@ -4406,6 +4405,7 @@ __metadata:
     typo-js: ^1.2.3
     vite: ~4.3.9
     vitest: ~0.32.0
+    wordsalad-calculator: ^0.1.8
   languageName: unknown
   linkType: soft
 
@@ -13144,13 +13144,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"salad_calculator@npm:^0.1.4":
-  version: 0.1.4
-  resolution: "salad_calculator@npm:0.1.4"
-  checksum: 549b117716fa1d647baf1ca751aedbe97176ee1a2101a8da9f0d29098e1c4239cb66d448adf3b396d782e8663dc9a9571a6c357d48dfd22c54a1ddcb9427b646
-  languageName: node
-  linkType: hard
-
 "sass-loader@npm:^12.2.0":
   version: 12.6.0
   resolution: "sass-loader@npm:12.6.0"
@@ -15258,6 +15251,13 @@ __metadata:
   dependencies:
     string-width: ^1.0.2 || 2 || 3 || 4
   checksum: d5fc37cd561f9daee3c80e03b92ed3e84d80dde3365a8767263d03dacfc8fa06b065ffe1df00d8c2a09f731482fcacae745abfbb478d4af36d0a891fad4834d3
+  languageName: node
+  linkType: hard
+
+"wordsalad-calculator@npm:^0.1.8":
+  version: 0.1.8
+  resolution: "wordsalad-calculator@npm:0.1.8"
+  checksum: 7c8d5c5d1d94dc3bff4e0137a33e39d103a2a4334406117c2efa3087fd63d453e25309096b413a6fc9a4989dcb55f611f20e9e283f41ee148a23ba684abd1a5c
   languageName: node
   linkType: hard
 
