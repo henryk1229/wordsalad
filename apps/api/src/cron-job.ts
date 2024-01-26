@@ -15,7 +15,7 @@ export const scheduleCronAndLogs = () => {
     SCHEDULE,
     () => {
       axios
-        .post(`http://${config.railwayDomain}/generate-salad`, null, {
+        .post(`https://${config.railwayDomain}/generate-salad`, null, {
           headers: {
             Authorization: `Bearer ${config.railwayPublicApiKey}`,
           },
