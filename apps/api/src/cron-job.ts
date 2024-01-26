@@ -2,10 +2,7 @@ import cron from 'node-cron';
 import axios from 'axios';
 import config from './config';
 
-const host = config.railwayInternalHost ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
-
-const SCHEDULE = '* 0 * * 0-6';
+const SCHEDULE = '* 3 * * 0-6';
 
 export const scheduleCronAndLogs = () => {
   const isValid = cron.validate(SCHEDULE);
@@ -18,12 +15,16 @@ export const scheduleCronAndLogs = () => {
     SCHEDULE,
     () => {
       axios
-        .post(`http://${host}:${port}/generate-salad`)
+        .post(`http://${config.railwayDomain}/generate-salad`, null, {
+          headers: {
+            Authorization: `Bearer ${config.railwayPublicApiKey}`,
+          },
+        })
         .then((response) => {
           console.log('GENERATED SALAD:', response?.data?.initialWord);
         })
         .catch((error) => {
-          console.log(`COULD NOT GENERATE SALAD: ${error.message}`);
+          console.log(`COULD NOT GENERATE SALAD: ${error}`);
         });
     },
     {
