@@ -2,7 +2,7 @@ import cron from 'node-cron';
 import axios from 'axios';
 import config from './config';
 
-const SCHEDULE = '* 3 * * 0-6';
+const SCHEDULE = '1 3 * * 0-6';
 
 export const scheduleCronAndLogs = () => {
   const isValid = cron.validate(SCHEDULE);
