@@ -1,10 +1,10 @@
 import { styled } from '../styles';
-import { animated } from '@react-spring/web';
 import HelpButton from './buttons/HelpButton';
+import StatsButton from './buttons/StatsButtton';
 
-const HeaderContainer = styled(animated.div, {
+const HeaderContainer = styled('div', {
   display: 'flex',
-  padding: '8px 0px',
+  padding: '8px',
   justifyContent: 'space-between',
 });
 
@@ -16,8 +16,8 @@ const Chip = styled('div', {
   variants: {
     size: {
       small: {
-        padding: '0px',
-        margin: '0px 4px',
+        padding: '2px',
+        margin: '2px',
       },
       medium: {
         marginLeft: '16px',
@@ -27,7 +27,7 @@ const Chip = styled('div', {
   },
 });
 
-const HeaderTile = styled(animated.div, {
+const HeaderTile = styled('div', {
   inset: 0,
   display: 'flex',
   justifyContent: 'center',
@@ -59,9 +59,14 @@ const HeaderTile = styled(animated.div, {
 interface Props {
   isSmallScreen: boolean;
   setHTPModalOpen: (bool: boolean) => void;
+  setStatsModalOpen: (bool: boolean) => void;
 }
 
-const Header: React.FC<Props> = ({ isSmallScreen, setHTPModalOpen }) => {
+const Header: React.FC<Props> = ({
+  isSmallScreen,
+  setHTPModalOpen,
+  setStatsModalOpen,
+}) => {
   const appName = isSmallScreen
     ? ['w', 'r', 'd', 's', 'l', 'd']
     : ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
@@ -81,7 +86,14 @@ const Header: React.FC<Props> = ({ isSmallScreen, setHTPModalOpen }) => {
           </HeaderTile>
         ))}
       </div>
-      <Chip>
+      <Chip
+        size={{
+          '@initial': 'small',
+          '@bp1': 'small',
+          '@bp2': 'medium',
+        }}
+      >
+        <StatsButton onClick={() => setStatsModalOpen(true)} />
         <HelpButton onClick={() => setHTPModalOpen(true)} />
       </Chip>
     </HeaderContainer>

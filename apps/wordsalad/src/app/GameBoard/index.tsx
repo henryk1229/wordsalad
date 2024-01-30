@@ -136,11 +136,13 @@ interface Props {
   attempts: string[][];
   ranking: string;
   solutionSets: Set<string>[];
+  statsModalOpen: boolean;
   tallyUserStats: (isWordSalad: boolean) => void;
   playNewWord: (word: string[]) => void;
   restartGame: () => void;
   displayToast: () => void;
   handleShareResults: () => Promise<void>;
+  setStatsModalOpen: (bool: boolean) => void;
 }
 
 const GameBoard: React.FC<Props> = ({
@@ -150,14 +152,14 @@ const GameBoard: React.FC<Props> = ({
   playedWords,
   attempts,
   solutionSets,
+  statsModalOpen,
   tallyUserStats,
   playNewWord,
   restartGame,
   displayToast,
   handleShareResults,
+  setStatsModalOpen,
 }) => {
-  // control display of stats modal
-  const [statsModalOpen, setStatsModalOpen] = useState<boolean>(false);
   const [rankingsModalOpen, setRankingsModalOpen] = useState<boolean>(false);
 
   const [currentWord, setCurrentWord] = useState<string[]>(

@@ -59,6 +59,9 @@ export function App() {
   const [howToPlayModalOpen, setHTPModalOpen] = useState<boolean>(true);
   const [htpModalDismissed, setHTPModalDismissed] = useState<boolean>(false);
 
+  // control display of stats modal
+  const [statsModalOpen, setStatsModalOpen] = useState<boolean>(false);
+
   const [dailySalad, setSalad] = useState<DailySalad>(initialSalad());
 
   useEffect(() => {
@@ -78,12 +81,19 @@ export function App() {
 
   const isSmallScreen = window?.matchMedia('(max-width: 500px)')?.matches;
 
-  console.log({ isSmallScreen });
-
   return (
     <AppContainer>
-      <Header isSmallScreen={isSmallScreen} setHTPModalOpen={setHTPModalOpen} />
-      <GameLayer key={dailySalad.initialWord} dailySalad={dailySalad} />
+      <Header
+        isSmallScreen={isSmallScreen}
+        setHTPModalOpen={setHTPModalOpen}
+        setStatsModalOpen={setStatsModalOpen}
+      />
+      <GameLayer
+        key={dailySalad.initialWord}
+        dailySalad={dailySalad}
+        statsModalOpen={statsModalOpen}
+        setStatsModalOpen={setStatsModalOpen}
+      />
       <HowToPlayModal open={howToPlayModalOpen} onClose={closeModal} />
     </AppContainer>
   );

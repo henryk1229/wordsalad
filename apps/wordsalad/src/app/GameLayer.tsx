@@ -81,9 +81,15 @@ export const getRanking = ({ numAttempts }: { numAttempts: number }) => {
 
 interface Props {
   dailySalad: DailySalad;
+  statsModalOpen: boolean;
+  setStatsModalOpen: (bool: boolean) => void;
 }
 
-const GameLayer: React.FC<Props> = ({ dailySalad, setHTPModalOpen }) => {
+const GameLayer: React.FC<Props> = ({
+  dailySalad,
+  statsModalOpen,
+  setStatsModalOpen,
+}) => {
   const { date, saladNumber, initialWord, solutionSet } = dailySalad;
 
   // track stored words and attempts in localStorage
@@ -285,12 +291,13 @@ const GameLayer: React.FC<Props> = ({ dailySalad, setHTPModalOpen }) => {
         playedWords={playedWords}
         attempts={allAttempts}
         solutionSets={solutionSets}
+        statsModalOpen={statsModalOpen}
         tallyUserStats={tallyUserStats}
         playNewWord={playNewWord}
         restartGame={restartGame}
-        setHTPModalOpen={setHTPModalOpen}
         displayToast={displayToast}
         handleShareResults={handleShareResults}
+        setStatsModalOpen={setStatsModalOpen}
       />
       <Toaster
         containerStyle={{ top: '120px' }}

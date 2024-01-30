@@ -71,9 +71,6 @@ const StatsDisplay: React.FC<Props> = ({
           >
             Current Rank: <span style={{ fontWeight: 'bold' }}>{ranking}</span>
           </div>
-          <div style={{ margin: '4px' }}>
-            <StatsButton onClick={() => setStatsModalOpen(true)} />
-          </div>
         </RankContainer>
         <AttemptsDisplay attempts={attempts} />
       </DisplayContent>
