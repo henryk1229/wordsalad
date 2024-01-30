@@ -139,7 +139,6 @@ interface Props {
   tallyUserStats: (isWordSalad: boolean) => void;
   playNewWord: (word: string[]) => void;
   restartGame: () => void;
-  setHTPModalOpen: (bool: boolean) => void;
   displayToast: () => void;
   handleShareResults: () => Promise<void>;
 }
@@ -154,7 +153,6 @@ const GameBoard: React.FC<Props> = ({
   tallyUserStats,
   playNewWord,
   restartGame,
-  setHTPModalOpen,
   displayToast,
   handleShareResults,
 }) => {
@@ -336,7 +334,6 @@ const GameBoard: React.FC<Props> = ({
           rankingsModalOpen={rankingsModalOpen}
           setRankingsModalOpen={setRankingsModalOpen}
           setStatsModalOpen={setStatsModalOpen}
-          setHTPModalOpen={setHTPModalOpen}
           handleShareResults={handleShareResults}
         />
         <RestartButton restartGame={restartGame} disabled={disableReset} />

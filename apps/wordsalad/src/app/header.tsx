@@ -1,13 +1,11 @@
 import { styled } from '../styles';
 import { animated } from '@react-spring/web';
-
-const APP_NAME = ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
-// const APP_NAME = ['w', 'r', 'd', 's', 'l', 'd'];
+import HelpButton from './buttons/HelpButton';
 
 const HeaderContainer = styled(animated.div, {
   display: 'flex',
   padding: '8px 0px',
-  justifyContent: 'space-evenly',
+  justifyContent: 'space-between',
 });
 
 const Chip = styled('div', {
@@ -60,9 +58,10 @@ const HeaderTile = styled(animated.div, {
 
 interface Props {
   isSmallScreen: boolean;
+  setHTPModalOpen: (bool: boolean) => void;
 }
 
-const Header: React.FC<Props> = ({ isSmallScreen }) => {
+const Header: React.FC<Props> = ({ isSmallScreen, setHTPModalOpen }) => {
   const appName = isSmallScreen
     ? ['w', 'r', 'd', 's', 'l', 'd']
     : ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
@@ -82,14 +81,8 @@ const Header: React.FC<Props> = ({ isSmallScreen }) => {
           </HeaderTile>
         ))}
       </div>
-      <Chip
-        size={{
-          '@initial': 'small',
-          '@bp1': 'small',
-          '@bp2': 'medium',
-        }}
-      >
-        by hhk
+      <Chip>
+        <HelpButton onClick={() => setHTPModalOpen(true)} />
       </Chip>
     </HeaderContainer>
   );

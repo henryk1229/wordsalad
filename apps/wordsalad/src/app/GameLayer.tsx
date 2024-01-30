@@ -81,7 +81,6 @@ export const getRanking = ({ numAttempts }: { numAttempts: number }) => {
 
 interface Props {
   dailySalad: DailySalad;
-  setHTPModalOpen: (bool: boolean) => void;
 }
 
 const GameLayer: React.FC<Props> = ({ dailySalad, setHTPModalOpen }) => {

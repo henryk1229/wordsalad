@@ -82,12 +82,8 @@ export function App() {
 
   return (
     <AppContainer>
-      <Header isSmallScreen={isSmallScreen} />
-      <GameLayer
-        key={dailySalad.initialWord}
-        dailySalad={dailySalad}
-        setHTPModalOpen={setHTPModalOpen}
-      />
+      <Header isSmallScreen={isSmallScreen} setHTPModalOpen={setHTPModalOpen} />
+      <GameLayer key={dailySalad.initialWord} dailySalad={dailySalad} />
       <HowToPlayModal open={howToPlayModalOpen} onClose={closeModal} />
     </AppContainer>
   );

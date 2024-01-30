@@ -1,7 +1,6 @@
 import { styled } from '@stitches/react';
 import { Tooltip } from 'react-tooltip';
 import StatsModal from './modals/StatsModal';
-import HelpButton from './buttons/HelpButton';
 import StatsButton from './buttons/StatsButtton';
 import RankingsModal from './modals/RankingsModal';
 
@@ -46,7 +45,6 @@ interface Props {
   rankingsModalOpen: boolean;
   setRankingsModalOpen: (bool: boolean) => void;
   setStatsModalOpen: (bool: boolean) => void;
-  setHTPModalOpen: (bool: boolean) => void;
   handleShareResults: () => Promise<void>;
 }
 
@@ -61,7 +59,6 @@ const StatsDisplay: React.FC<Props> = ({
   rankingsModalOpen,
   setRankingsModalOpen,
   setStatsModalOpen,
-  setHTPModalOpen,
   handleShareResults,
 }) => {
   return (
@@ -76,9 +73,6 @@ const StatsDisplay: React.FC<Props> = ({
           </div>
           <div style={{ margin: '4px' }}>
             <StatsButton onClick={() => setStatsModalOpen(true)} />
-          </div>
-          <div style={{ margin: '4px' }}>
-            <HelpButton onClick={() => setHTPModalOpen(true)} />
           </div>
         </RankContainer>
         <AttemptsDisplay attempts={attempts} />
