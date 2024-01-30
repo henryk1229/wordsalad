@@ -76,9 +76,13 @@ export function App() {
     }
   };
 
+  const isSmallScreen = window?.matchMedia('(max-width: 500px)')?.matches;
+
+  console.log({ isSmallScreen });
+
   return (
     <AppContainer>
-      <Header />
+      <Header isSmallScreen={isSmallScreen} />
       <GameLayer
         key={dailySalad.initialWord}
         dailySalad={dailySalad}

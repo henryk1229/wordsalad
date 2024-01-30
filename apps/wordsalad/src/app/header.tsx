@@ -2,6 +2,7 @@ import { styled } from '../styles';
 import { animated } from '@react-spring/web';
 
 const APP_NAME = ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
+// const APP_NAME = ['w', 'r', 'd', 's', 'l', 'd'];
 
 const HeaderContainer = styled(animated.div, {
   display: 'flex',
@@ -46,7 +47,7 @@ const HeaderTile = styled(animated.div, {
       small: {
         width: '24px',
         height: '32px',
-        margin: '4px 2px',
+        margin: '2px',
       },
       medium: {
         width: '56px',
@@ -57,32 +58,41 @@ const HeaderTile = styled(animated.div, {
   },
 });
 
-const Header: React.FC = () => (
-  <HeaderContainer className="header">
-    <div style={{ display: 'flex' }}>
-      {APP_NAME.map((letter, idx) => (
-        <HeaderTile
-          key={`${letter}-${idx}`}
-          size={{
-            '@initial': 'small',
-            '@bp1': 'small',
-            '@bp2': 'medium',
-          }}
-        >
-          {letter.toUpperCase()}
-        </HeaderTile>
-      ))}
-    </div>
-    <Chip
-      size={{
-        '@initial': 'small',
-        '@bp1': 'small',
-        '@bp2': 'medium',
-      }}
-    >
-      by hhk
-    </Chip>
-  </HeaderContainer>
-);
+interface Props {
+  isSmallScreen: boolean;
+}
+
+const Header: React.FC<Props> = ({ isSmallScreen }) => {
+  const appName = isSmallScreen
+    ? ['w', 'r', 'd', 's', 'l', 'd']
+    : ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
+  return (
+    <HeaderContainer className="header">
+      <div style={{ display: 'flex' }}>
+        {appName.map((letter, idx) => (
+          <HeaderTile
+            key={`${letter}-${idx}`}
+            size={{
+              '@initial': 'small',
+              '@bp1': 'small',
+              '@bp2': 'medium',
+            }}
+          >
+            {letter.toUpperCase()}
+          </HeaderTile>
+        ))}
+      </div>
+      <Chip
+        size={{
+          '@initial': 'small',
+          '@bp1': 'small',
+          '@bp2': 'medium',
+        }}
+      >
+        by hhk
+      </Chip>
+    </HeaderContainer>
+  );
+};
 
 export default Header;
