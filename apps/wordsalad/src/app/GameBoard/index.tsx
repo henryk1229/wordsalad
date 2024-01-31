@@ -46,7 +46,7 @@ const WordsGridContainer = styled('div', {
   variants: {
     size: {
       small: {
-        width: '256px',
+        width: '292px',
       },
       large: {
         width: '324px',
