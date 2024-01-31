@@ -17,20 +17,8 @@ import config from '../../config';
 const URL = `${config.apiUrl}/spellcheck`;
 
 const BoardContainer = styled('div', {
-  variants: {
-    size: {
-      small: {
-        position: 'fixed',
-        inset: '64px 16px 16px',
-      },
-      medium: {
-        position: 'relative',
-        inset: '0px',
-        height: '560px',
-        width: '768px',
-      },
-    },
-  },
+  display: 'flex',
+  flexDirection: 'column',
 });
 
 const BoardWrapper = styled('div', {
@@ -72,14 +60,6 @@ const StatsDisplayContainer = styled('div', {
   fontSize: '18px',
   justifyContent: 'center',
   alignItems: 'center',
-  variants: {
-    size: {
-      medium: {
-        margin: '8px 0px 0px',
-        justifyContent: 'flex-end',
-      },
-    },
-  },
 });
 
 const LettersBankContainer = styled('div', {
@@ -310,21 +290,8 @@ const GameBoard: React.FC<Props> = ({
   );
 
   return (
-    <BoardContainer
-      className="boardContainer"
-      size={{
-        '@initial': 'small',
-        '@bp1': 'small',
-        '@bp2': 'medium',
-      }}
-    >
-      <StatsDisplayContainer
-        className="statsDisplayContainer"
-        size={{
-          '@initial': 'medium',
-          '@bp2': 'medium',
-        }}
-      >
+    <BoardContainer className="boardContainer">
+      <StatsDisplayContainer className="statsDisplayContainer">
         <StatsDisplay
           saladDate={saladDate}
           saladNumber={saladNumber}
@@ -342,27 +309,15 @@ const GameBoard: React.FC<Props> = ({
       </StatsDisplayContainer>
       <BoardWrapper
         className="boardWrapper"
-        size={{
-          '@initial': 'small',
-          '@bp1': 'small',
-          '@bp2': 'medium',
-        }}
+        size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
       >
         <WordsGridContainer
-          size={{
-            '@initial': 'small',
-            '@bp1': 'small',
-            '@bp2': 'large',
-          }}
+          size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'large' }}
         >
           <WordsGrid playedWords={playedWords} solutionSets={solutionSets} />
         </WordsGridContainer>
         <LettersBankContainer
-          size={{
-            '@initial': 'small',
-            '@bp1': 'small',
-            '@bp2': 'medium',
-          }}
+          size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
         >
           <LettersBank usedLetters={usedLetters} onClick={handleClick} />
         </LettersBankContainer>

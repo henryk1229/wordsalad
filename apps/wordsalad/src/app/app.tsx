@@ -7,15 +7,6 @@ import GameLayer from './GameLayer';
 import HowToPlayModal from './modals/HowToPlayModal';
 import config from '../config';
 
-const AppContainer = styled('div', {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  backgroundColor: '#F3EFE0',
-});
-
 export type DailySalad = {
   id: string;
   date: string;
@@ -82,7 +73,7 @@ export function App() {
   const isSmallScreen = window?.matchMedia('(max-width: 500px)')?.matches;
 
   return (
-    <AppContainer>
+    <>
       <Header
         isSmallScreen={isSmallScreen}
         setHTPModalOpen={setHTPModalOpen}
@@ -95,7 +86,7 @@ export function App() {
         setStatsModalOpen={setStatsModalOpen}
       />
       <HowToPlayModal open={howToPlayModalOpen} onClose={closeModal} />
-    </AppContainer>
+    </>
   );
 }
 
