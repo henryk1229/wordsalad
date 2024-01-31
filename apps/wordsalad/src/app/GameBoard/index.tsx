@@ -37,6 +37,9 @@ const BoardWrapper = styled('div', {
         justifyContent: 'space-evenly',
         paddingTop: '16px',
       },
+      xlarge: {
+        padding: '16px 128px',
+      },
     },
   },
 });
@@ -353,7 +356,12 @@ const GameBoard: React.FC<Props> = ({
           </StatsDisplayContainer>
           <BoardWrapper
             className="boardWrapper"
-            size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
+            size={{
+              '@initial': 'small',
+              '@bp1': 'small',
+              '@bp2': 'medium',
+              '@bp4': 'xlarge',
+            }}
           >
             <WordsGridContainer
               size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'large' }}
