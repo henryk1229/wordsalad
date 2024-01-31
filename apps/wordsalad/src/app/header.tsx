@@ -4,7 +4,6 @@ import StatsButton from './buttons/StatsButtton';
 
 const HeaderContainer = styled('div', {
   display: 'flex',
-  padding: '8px',
   justifyContent: 'space-between',
 });
 
@@ -20,8 +19,7 @@ const Chip = styled('div', {
         margin: '2px',
       },
       medium: {
-        marginLeft: '16px',
-        padding: '8px 0px 4px 64px',
+        padding: '8px',
       },
     },
   },
@@ -70,8 +68,11 @@ const Header: React.FC<Props> = ({
   const appName = isSmallScreen
     ? ['w', 'r', 'd', 's', 'l', 'd']
     : ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
+  const justifyContent = isSmallScreen
+    ? { justifyContent: 'space-between' }
+    : { justifyContent: 'center' };
   return (
-    <HeaderContainer className="header">
+    <HeaderContainer className="header" style={{ ...justifyContent }}>
       <div style={{ display: 'flex' }}>
         {appName.map((letter, idx) => (
           <HeaderTile
