@@ -168,7 +168,7 @@ const GameBoard: React.FC<Props> = ({
   const isLastTurn = playedWords.length === 3;
 
   const isWordSalad = playedWords.length === 4 && playedWords[0].length > 0;
-  const isLastAttempt = attempts.length >= 7;
+  const isLastAttempt = attempts.length >= 6;
   const isBadAttempt =
     playedWords[0]?.length > 0 && solutionSets[0]?.size === 0;
   const isLostGame = isLastAttempt && isBadAttempt;

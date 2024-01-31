@@ -97,7 +97,7 @@ const GameLayer: React.FC<Props> = ({
   // track stored words and attempts in localStorage
   const {
     storedWords,
-    storedAttempts: pastAttempts,
+    storedAttempts,
     storedStats: userStats,
   } = retrieveLSData(saladNumber);
 
@@ -113,12 +113,6 @@ const GameLayer: React.FC<Props> = ({
     storedWords.length > 0 ? [rootWord, ...storedWords] : [rootWord]
   );
 
-  // aggregate attempt in play and past attempts
-  const currentAttempt = playedWords.map((word) => word.join(''));
-
-  // TODO - get rid of current attempt
-  const allAttempts = [...pastAttempts, currentAttempt];
-
   // make solution sets based on words played
   const solutionSets = makeSolutionSets(playedWords, solutionSet);
 
@@ -130,7 +124,7 @@ const GameLayer: React.FC<Props> = ({
       saladNumber.toString(),
       JSON.stringify({
         submittedWords: [],
-        attempts: [...pastAttempts, latestAttempt],
+        attempts: [...storedAttempts, latestAttempt],
       })
     );
     // trigger refresh
@@ -143,7 +137,7 @@ const GameLayer: React.FC<Props> = ({
     const { saladNumber } = dailySalad;
     const stringified = JSON.stringify({
       submittedWords: [...storedWords, newWord],
-      attempts: pastAttempts,
+      attempts: storedAttempts,
     });
     localStorage.setItem(saladNumber.toString(), stringified);
     setPlayedWords([...playedWords, newWord]);
@@ -199,7 +193,7 @@ const GameLayer: React.FC<Props> = ({
   };
 
   const displayToast = () => {
-    const attemptsRemaining = 7 - allAttempts.length;
+    const attemptsRemaining = 6 - storedAttempts.length;
 
     // reveal a random WordSalad on game over
     if (attemptsRemaining < 1) {
@@ -245,19 +239,19 @@ const GameLayer: React.FC<Props> = ({
   };
 
   const handleShareResults = async () => {
-    const lastAttempt = allAttempts[allAttempts.length - 1];
+    const lastAttempt = storedAttempts[storedAttempts.length - 1];
     const isWordSalad = lastAttempt.length === 4;
-    const emojiString = allAttempts
+    const emojiString = storedAttempts
       .map((_att, idx) => {
-        if (idx === allAttempts.length - 1) {
+        if (idx === storedAttempts.length - 1) {
           return isWordSalad ? SALAD_EMOJI : TOMATO_EMOJI;
         }
         return TOMATO_EMOJI;
       })
       .join('');
-    const numAttempts = isWordSalad ? allAttempts.length : 'X';
+    const numAttempts = isWordSalad ? storedAttempts.length : 'X';
     const rankingText = isWordSalad
-      ? ` - ${getRanking({ numAttempts: allAttempts.length })}`
+      ? ` - ${getRanking({ numAttempts: storedAttempts.length })}`
       : '';
     const text = `WordSalad ${saladNumber} ${numAttempts}/7${rankingText}\n${emojiString}`;
     try {
@@ -291,9 +285,9 @@ const GameLayer: React.FC<Props> = ({
         key={playedWords.length}
         saladDate={date}
         saladNumber={saladNumber}
-        ranking={getRanking({ numAttempts: allAttempts.length })}
+        ranking={getRanking({ numAttempts: storedAttempts.length })}
         playedWords={playedWords}
-        attempts={allAttempts}
+        attempts={storedAttempts}
         solutionSets={solutionSets}
         statsModalOpen={statsModalOpen}
         tallyUserStats={tallyUserStats}
