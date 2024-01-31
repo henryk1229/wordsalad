@@ -1,7 +1,5 @@
 import { styled } from '@stitches/react';
 import { Tooltip } from 'react-tooltip';
-import StatsModal from './modals/StatsModal';
-import StatsButton from './buttons/StatsButtton';
 import RankingsModal from './modals/RankingsModal';
 
 const DisplayContainer = styled('div', {
@@ -35,31 +33,21 @@ const AttemptBadge = styled('div', {
 });
 
 interface Props {
-  saladDate: string;
-  saladNumber: number;
   attempts: string[][];
   ranking: string;
-  statsModalOpen: boolean;
   isWordSalad: boolean;
   isLostGame: boolean;
   rankingsModalOpen: boolean;
   setRankingsModalOpen: (bool: boolean) => void;
-  setStatsModalOpen: (bool: boolean) => void;
-  handleShareResults: () => Promise<void>;
 }
 
 const StatsDisplay: React.FC<Props> = ({
-  saladDate,
-  saladNumber,
   attempts,
   ranking,
-  statsModalOpen,
   isWordSalad,
   isLostGame,
   rankingsModalOpen,
   setRankingsModalOpen,
-  setStatsModalOpen,
-  handleShareResults,
 }) => {
   return (
     <DisplayContainer>
@@ -81,16 +69,6 @@ const StatsDisplay: React.FC<Props> = ({
         isWordSalad={isWordSalad}
         isLostGame={isLostGame}
         onClose={() => setRankingsModalOpen(false)}
-      />
-      <StatsModal
-        saladDate={saladDate}
-        saladNumber={saladNumber}
-        attempts={attempts}
-        open={statsModalOpen}
-        isWordSalad={isWordSalad}
-        isLostGame={isLostGame}
-        onClose={() => setStatsModalOpen(false)}
-        handleShareResults={handleShareResults}
       />
     </DisplayContainer>
   );
