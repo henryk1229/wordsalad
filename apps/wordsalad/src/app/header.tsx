@@ -1,5 +1,6 @@
 import { styled } from '../styles';
 import HelpButton from './buttons/HelpButton';
+import RestartButton from './buttons/RestartButton';
 import StatsButton from './buttons/StatsButtton';
 
 const HeaderContainer = styled('div', {
@@ -55,16 +56,19 @@ const HeaderTile = styled('div', {
 });
 
 interface Props {
-  isSmallScreen: boolean;
+  disableReset: boolean;
+  restartGame: () => void;
   setHTPModalOpen: (bool: boolean) => void;
   setStatsModalOpen: (bool: boolean) => void;
 }
 
 const Header: React.FC<Props> = ({
-  isSmallScreen,
+  disableReset,
+  restartGame,
   setHTPModalOpen,
   setStatsModalOpen,
 }) => {
+  const isSmallScreen = window?.matchMedia('(max-width: 500px)')?.matches;
   const appName = isSmallScreen
     ? ['w', 'r', 'd', 's', 'l', 'd']
     : ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
@@ -96,6 +100,7 @@ const Header: React.FC<Props> = ({
       >
         <StatsButton onClick={() => setStatsModalOpen(true)} />
         <HelpButton onClick={() => setHTPModalOpen(true)} />
+        <RestartButton restartGame={restartGame} disabled={disableReset} />
       </Chip>
     </HeaderContainer>
   );

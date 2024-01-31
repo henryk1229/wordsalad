@@ -83,12 +83,14 @@ interface Props {
   dailySalad: DailySalad;
   statsModalOpen: boolean;
   setStatsModalOpen: (bool: boolean) => void;
+  setHTPModalOpen: (bool: boolean) => void;
 }
 
 const GameLayer: React.FC<Props> = ({
   dailySalad,
   statsModalOpen,
   setStatsModalOpen,
+  setHTPModalOpen,
 }) => {
   const { date, saladNumber, initialWord, solutionSet } = dailySalad;
 
@@ -298,6 +300,7 @@ const GameLayer: React.FC<Props> = ({
         displayToast={displayToast}
         handleShareResults={handleShareResults}
         setStatsModalOpen={setStatsModalOpen}
+        setHTPModalOpen={setHTPModalOpen}
       />
       <Toaster
         containerStyle={{ top: '120px' }}

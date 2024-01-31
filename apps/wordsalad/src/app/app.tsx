@@ -1,5 +1,3 @@
-import { styled } from '@stitches/react';
-import Header from './header';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { camelCase } from 'change-case';
@@ -70,20 +68,14 @@ export function App() {
     }
   };
 
-  const isSmallScreen = window?.matchMedia('(max-width: 500px)')?.matches;
-
   return (
     <>
-      <Header
-        isSmallScreen={isSmallScreen}
-        setHTPModalOpen={setHTPModalOpen}
-        setStatsModalOpen={setStatsModalOpen}
-      />
       <GameLayer
         key={dailySalad.initialWord}
         dailySalad={dailySalad}
         statsModalOpen={statsModalOpen}
         setStatsModalOpen={setStatsModalOpen}
+        setHTPModalOpen={setHTPModalOpen}
       />
       <HowToPlayModal open={howToPlayModalOpen} onClose={closeModal} />
     </>

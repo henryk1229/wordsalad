@@ -10,10 +10,10 @@ import StatsDisplay from '../StatsDisplay';
 import DeleteButton from '../buttons/DeleteButton';
 import EnterButton from '../buttons/EnterButton';
 import { useWatchGameFlow } from '../../hooks/useWatchGameFlow';
-import RestartButton from '../buttons/RestartButton';
 import { styled } from '../../styles';
 import config from '../../config';
 import StatsModal from '../modals/StatsModal';
+import Header from '../header';
 
 const URL = `${config.apiUrl}/spellcheck`;
 
@@ -124,6 +124,7 @@ interface Props {
   displayToast: () => void;
   handleShareResults: () => Promise<void>;
   setStatsModalOpen: (bool: boolean) => void;
+  setHTPModalOpen: (bool: boolean) => void;
 }
 
 const GameBoard: React.FC<Props> = ({
@@ -140,6 +141,7 @@ const GameBoard: React.FC<Props> = ({
   displayToast,
   handleShareResults,
   setStatsModalOpen,
+  setHTPModalOpen,
 }) => {
   const [rankingsModalOpen, setRankingsModalOpen] = useState<boolean>(false);
 
@@ -292,33 +294,50 @@ const GameBoard: React.FC<Props> = ({
 
   return (
     <>
+      <Header
+        disableReset={disableReset}
+        restartGame={restartGame}
+        setHTPModalOpen={setHTPModalOpen}
+        setStatsModalOpen={setStatsModalOpen}
+      />
       <BoardContainer className="boardContainer">
-        <StatsDisplayContainer className="statsDisplayContainer">
-          <StatsDisplay
-            attempts={attempts}
-            ranking={ranking}
-            isWordSalad={isWordSalad}
-            isLostGame={isLostGame}
-            rankingsModalOpen={rankingsModalOpen}
-            setRankingsModalOpen={setRankingsModalOpen}
-          />
-          <RestartButton restartGame={restartGame} disabled={disableReset} />
-        </StatsDisplayContainer>
-        <BoardWrapper
-          className="boardWrapper"
-          size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '0px 72px',
+          }}
         >
-          <WordsGridContainer
-            size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'large' }}
-          >
-            <WordsGrid playedWords={playedWords} solutionSets={solutionSets} />
-          </WordsGridContainer>
-          <LettersBankContainer
+          <StatsDisplayContainer className="statsDisplayContainer">
+            <StatsDisplay
+              attempts={attempts}
+              ranking={ranking}
+              isWordSalad={isWordSalad}
+              isLostGame={isLostGame}
+              rankingsModalOpen={rankingsModalOpen}
+              setRankingsModalOpen={setRankingsModalOpen}
+            />
+          </StatsDisplayContainer>
+          <BoardWrapper
+            className="boardWrapper"
             size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
           >
-            <LettersBank usedLetters={usedLetters} onClick={handleClick} />
-          </LettersBankContainer>
-        </BoardWrapper>
+            <WordsGridContainer
+              size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'large' }}
+            >
+              <WordsGrid
+                playedWords={playedWords}
+                solutionSets={solutionSets}
+              />
+            </WordsGridContainer>
+            <LettersBankContainer
+              size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
+            >
+              <LettersBank usedLetters={usedLetters} onClick={handleClick} />
+            </LettersBankContainer>
+          </BoardWrapper>
+        </div>
+
         <SpringCaddy
           style={{
             ...shakeStyles,
