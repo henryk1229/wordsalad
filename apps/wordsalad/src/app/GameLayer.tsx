@@ -115,6 +115,8 @@ const GameLayer: React.FC<Props> = ({
 
   // aggregate attempt in play and past attempts
   const currentAttempt = playedWords.map((word) => word.join(''));
+
+  // TODO - get rid of current attempt
   const allAttempts = [...pastAttempts, currentAttempt];
 
   // make solution sets based on words played

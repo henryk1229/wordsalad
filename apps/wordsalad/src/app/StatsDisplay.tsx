@@ -52,14 +52,14 @@ const StatsDisplay: React.FC<Props> = ({
   return (
     <DisplayContainer>
       <DisplayContent>
-        <RankContainer>
+        {/* <RankContainer>
           <div
             style={{ margin: '4px', cursor: 'pointer', width: '180px' }}
             onClick={() => setRankingsModalOpen(true)}
           >
             Current Rank: <span style={{ fontWeight: 'bold' }}>{ranking}</span>
           </div>
-        </RankContainer>
+        </RankContainer> */}
         <AttemptsDisplay attempts={attempts} />
       </DisplayContent>
       <RankingsModal
@@ -82,7 +82,7 @@ interface AttemptsDisplayProps {
 const AttemptsDisplay: React.FC<AttemptsDisplayProps> = ({ attempts }) => {
   // make an array of seven past attempts and any remaining attempts
   const attemptsAndRemaining = Array.from(
-    Array(7),
+    Array(6),
     (_num, idx) => attempts[idx]
   );
   return (

@@ -58,9 +58,18 @@ const WordsGridContainer = styled('div', {
 
 const StatsDisplayContainer = styled('div', {
   display: 'flex',
-  fontSize: '18px',
-  justifyContent: 'center',
+  justifyContent: 'flex-end',
   alignItems: 'center',
+  variants: {
+    size: {
+      small: {
+        padding: '8px 4px 0px',
+      },
+      medium: {
+        padding: '4px 28px',
+      },
+    },
+  },
 });
 
 const LettersBankContainer = styled('div', {
@@ -308,7 +317,10 @@ const GameBoard: React.FC<Props> = ({
             padding: '0px 72px',
           }}
         >
-          <StatsDisplayContainer className="statsDisplayContainer">
+          <StatsDisplayContainer
+            className="statsDisplayContainer"
+            size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
+          >
             <StatsDisplay
               attempts={attempts}
               ranking={ranking}
