@@ -56,17 +56,36 @@ const WordsGridContainer = styled('div', {
   },
 });
 
+const SDWrapper = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  variants: {
+    size: {
+      small: {
+        padding: '0px',
+      },
+      medium: {
+        padding: '0px 72px',
+      },
+    },
+  },
+});
+
 const StatsDisplayContainer = styled('div', {
   display: 'flex',
-  justifyContent: 'flex-end',
   alignItems: 'center',
   variants: {
     size: {
       small: {
         padding: '8px 4px 0px',
+        justifyContent: 'center',
       },
-      medium: {
+      large: {
         padding: '4px 28px',
+        justifyContent: 'flex-end',
+      },
+      xlarge: {
+        padding: '16px  232px',
       },
     },
   },
@@ -310,16 +329,17 @@ const GameBoard: React.FC<Props> = ({
         setStatsModalOpen={setStatsModalOpen}
       />
       <BoardContainer className="boardContainer">
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            padding: '0px 72px',
-          }}
+        <SDWrapper
+          size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
         >
           <StatsDisplayContainer
             className="statsDisplayContainer"
-            size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
+            size={{
+              '@initial': 'small',
+              '@bp1': 'small',
+              '@bp2': 'large',
+              '@bp4': 'xlarge',
+            }}
           >
             <StatsDisplay
               attempts={attempts}
@@ -348,7 +368,7 @@ const GameBoard: React.FC<Props> = ({
               <LettersBank usedLetters={usedLetters} onClick={handleClick} />
             </LettersBankContainer>
           </BoardWrapper>
-        </div>
+        </SDWrapper>
 
         <SpringCaddy
           style={{
