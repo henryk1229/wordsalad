@@ -35,6 +35,7 @@ const BoardWrapper = styled('div', {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
+        paddingTop: '16px',
       },
     },
   },
@@ -64,7 +65,7 @@ const SDWrapper = styled('div', {
       small: {
         padding: '0px',
       },
-      medium: {
+      large: {
         padding: '0px 72px',
       },
     },
@@ -102,7 +103,7 @@ const LettersBankContainer = styled('div', {
         marginTop: '4px',
       },
       medium: {
-        marginTop: '20px',
+        height: '324px',
       },
     },
   },
@@ -330,7 +331,7 @@ const GameBoard: React.FC<Props> = ({
       />
       <BoardContainer className="boardContainer">
         <SDWrapper
-          size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
+          size={{ '@initial': 'small', '@bp1': 'small', '@bp3': 'large' }}
         >
           <StatsDisplayContainer
             className="statsDisplayContainer"
