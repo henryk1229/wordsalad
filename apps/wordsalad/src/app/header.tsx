@@ -27,7 +27,6 @@ const Chip = styled('div', {
 });
 
 const HeaderTile = styled('div', {
-  inset: 0,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

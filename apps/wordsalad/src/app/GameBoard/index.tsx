@@ -60,7 +60,7 @@ const WordsGridContainer = styled('div', {
   },
 });
 
-const SDWrapper = styled('div', {
+const SDBWrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   variants: {
@@ -115,14 +115,15 @@ const LettersBankContainer = styled('div', {
 const SpringCaddy = styled(animated.div, {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
   variants: {
     size: {
       small: {
         marginTop: '0px',
+        justifyContent: 'space-evenly',
       },
       large: {
         marginTop: '16px',
+        justifyContent: 'center',
       },
     },
   },
@@ -333,7 +334,7 @@ const GameBoard: React.FC<Props> = ({
         setStatsModalOpen={setStatsModalOpen}
       />
       <BoardContainer className="boardContainer">
-        <SDWrapper
+        <SDBWrapper
           size={{ '@initial': 'small', '@bp1': 'small', '@bp3': 'large' }}
         >
           <StatsDisplayContainer
@@ -377,17 +378,11 @@ const GameBoard: React.FC<Props> = ({
               <LettersBank usedLetters={usedLetters} onClick={handleClick} />
             </LettersBankContainer>
           </BoardWrapper>
-        </SDWrapper>
-
+        </SDBWrapper>
         <SpringCaddy
-          style={{
-            ...shakeStyles,
-          }}
-          size={{
-            '@initial': 'small',
-            '@bp1': 'small',
-            '@bp3': 'large',
-          }}
+          className="springCaddy"
+          style={shakeStyles}
+          size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'large' }}
         >
           <EnterButton
             disabled={disableSubmitDelete}

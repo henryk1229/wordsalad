@@ -6,13 +6,12 @@ const CurrentWordContainer = styled('div', {
   display: 'flex',
   borderRadius: '3px',
   alignItems: 'center',
-  justifyContent: 'space-evenly',
+  justifyContent: 'center',
   variants: {
     size: {
       small: {
         marginTop: '4px',
         height: '48px',
-        width: '316px',
       },
       medium: {
         height: '84px',
@@ -50,11 +49,7 @@ const CurrentWord: React.FC<BoardProps> = ({
     <CurrentWordContainer
       autoFocus={true}
       className="currentWord"
-      size={{
-        '@initial': 'small',
-        '@bp1': 'small',
-        '@bp2': 'medium',
-      }}
+      size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
     >
       <WordCaddy currentWord={currentWord} isLastWord={isLastWord} />
     </CurrentWordContainer>

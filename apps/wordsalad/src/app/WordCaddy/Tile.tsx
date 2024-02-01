@@ -25,7 +25,7 @@ const LetterTile = styled(animated.div, {
       medium: {
         width: '56px',
         height: '64px',
-        margin: '6px',
+        margin: '4px',
       },
     },
   },
@@ -47,11 +47,7 @@ const WordCaddyTile: React.FC<Props> = ({ letter, spring, isAnchorTile }) => {
   return !letter ? (
     <BlankTile
       style={spring}
-      size={{
-        '@initial': 'small',
-        '@bp1': 'small',
-        '@bp2': 'medium',
-      }}
+      size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
     />
   ) : (
     <LetterTile
@@ -63,11 +59,7 @@ const WordCaddyTile: React.FC<Props> = ({ letter, spring, isAnchorTile }) => {
               color: '#fafafa',
             }),
       }}
-      size={{
-        '@initial': 'small',
-        '@bp1': 'small',
-        '@bp2': 'medium',
-      }}
+      size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
     >
       {letter.toUpperCase()}
     </LetterTile>
