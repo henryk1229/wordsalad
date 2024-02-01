@@ -7,14 +7,6 @@ const inlineStyles = {
   bps: { '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' } as const,
 };
 
-export type GameStats = {
-  date: string;
-  saladNumber: number;
-  attempts: number;
-  ranking: string;
-  initialWord: string;
-};
-
 interface Props {
   open: boolean;
   onClose: () => void;
@@ -29,10 +21,6 @@ const HowToPlayModal: React.FC<Props> = ({ open, onClose }) => {
       <Content>
         <ul style={inlineStyles.ul}>
           <li style={{ margin: '8px' }}>
-            Each word must be <span style={{ fontWeight: 600 }}>five</span>{' '}
-            letters
-          </li>
-          <li style={{ margin: '8px' }}>
             Each word must start with the{' '}
             <span style={{ fontWeight: 600 }}>last letter</span> of the
             preceding word
@@ -42,9 +30,8 @@ const HowToPlayModal: React.FC<Props> = ({ open, onClose }) => {
             <span style={{ fontWeight: 600 }}>once</span> per WordSalad
           </li>
           <li style={{ margin: '8px' }}>
-            The <span style={{ fontWeight: 600 }}>number</span> next to a layer
-            shows the number of words at that layer that can complete your
-            WordSalad
+            The <span style={{ fontWeight: 600 }}>number</span> next to each
+            layer shows how many words at that layer can complete your WordSalad
           </li>
         </ul>
       </Content>
