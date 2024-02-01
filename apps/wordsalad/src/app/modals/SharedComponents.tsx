@@ -97,6 +97,8 @@ export const ResponsiveModal: React.FC<Props> = ({
   onClose,
   children,
 }) => {
+  const isSmallScreen = window?.matchMedia('(max-width: 800px)')?.matches;
+  const width = isSmallScreen ? '66%' : '30%';
   return (
     <Modal
       open={open}
@@ -106,7 +108,7 @@ export const ResponsiveModal: React.FC<Props> = ({
       aria-describedby="modal-indicating-game-over"
       styles={{
         modal: {
-          width: '66%',
+          width,
           borderRadius: '3px',
           backgroundColor: '#F3EFE0',
           fontFamily: 'Helvetica',
