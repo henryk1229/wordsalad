@@ -68,12 +68,12 @@ const Header: React.FC<Props> = ({
   setHTPModalOpen,
   setStatsModalOpen,
 }) => {
-  const isSmallScreen = window?.matchMedia('(max-width: 500px)')?.matches;
+  const isSmallScreen = window?.matchMedia('(max-width: 400px)')?.matches;
   const appName = isSmallScreen
     ? ['w', 'r', 'd', 's', 'l', 'd']
     : ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
   const justifyContent = isSmallScreen
-    ? { justifyContent: 'space-between' }
+    ? { justifyContent: 'space-evenly' }
     : { justifyContent: 'center' };
   return (
     <HeaderContainer className="header" style={{ ...justifyContent }}>
