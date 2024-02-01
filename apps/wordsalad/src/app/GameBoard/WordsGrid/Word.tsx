@@ -35,17 +35,16 @@ const Badge = styled('div', {
   color: 'black',
   border: '2px solid black',
   borderRadius: '50%',
+  marginLeft: '12px',
   variants: {
     size: {
       small: {
         height: '24px',
         width: '24px',
-        marginLeft: '4px',
       },
       medium: {
         height: '32px',
         width: '32px',
-        marginLeft: '12px',
       },
     },
   },
