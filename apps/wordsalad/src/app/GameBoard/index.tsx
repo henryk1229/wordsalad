@@ -12,7 +12,7 @@ import EnterButton from '../buttons/EnterButton';
 import { useWatchGameFlow } from '../../hooks/useWatchGameFlow';
 import { styled } from '../../styles';
 import config from '../../config';
-import StatsModal from '../Modals/StatsModal';
+import StatsModal from '../modals/StatsModal';
 import Header from '../header';
 
 const URL = `${config.apiUrl}/spellcheck`;

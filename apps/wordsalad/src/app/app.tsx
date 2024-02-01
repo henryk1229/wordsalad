@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { camelCase } from 'change-case';
 import GameLayer from './GameLayer';
-import HowToPlayModal from './Modals/HowToPlayModal';
+import HowToPlayModal from './modals/HowToPlayModal';
 import config from '../config';
 
 export type DailySalad = {
