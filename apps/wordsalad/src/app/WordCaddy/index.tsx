@@ -23,7 +23,7 @@ const WordCaddy: React.FC<WordCaddyProps> = ({ currentWord, isLastWord }) => {
   const isMountedInHeader = currentWord.join('') === 'wordsalad';
 
   return (
-    <div style={{ display: 'flex' }}>
+    <>
       {trails.map((spring, idx) => {
         const isAnchorTile = isMountedInHeader
           ? [0, 8].includes(idx)
@@ -37,7 +37,7 @@ const WordCaddy: React.FC<WordCaddyProps> = ({ currentWord, isLastWord }) => {
           />
         );
       })}
-    </div>
+    </>
   );
 };
 

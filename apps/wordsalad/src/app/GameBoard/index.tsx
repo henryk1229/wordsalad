@@ -10,27 +10,16 @@ import StatsDisplay from '../StatsDisplay';
 import DeleteButton from '../buttons/DeleteButton';
 import EnterButton from '../buttons/EnterButton';
 import { useWatchGameFlow } from '../../hooks/useWatchGameFlow';
-import RestartButton from '../buttons/RestartButton';
 import { styled } from '../../styles';
 import config from '../../config';
+import StatsModal from '../modals/StatsModal';
+import Header from '../header';
 
 const URL = `${config.apiUrl}/spellcheck`;
 
 const BoardContainer = styled('div', {
-  variants: {
-    size: {
-      small: {
-        position: 'fixed',
-        inset: '64px 16px 16px',
-      },
-      medium: {
-        position: 'relative',
-        inset: '0px',
-        height: '560px',
-        width: '768px',
-      },
-    },
-  },
+  display: 'flex',
+  flexDirection: 'column',
 });
 
 const BoardWrapper = styled('div', {
@@ -46,6 +35,10 @@ const BoardWrapper = styled('div', {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
+        paddingTop: '16px',
+      },
+      xlarge: {
+        padding: '16px 128px',
       },
     },
   },
@@ -57,7 +50,7 @@ const WordsGridContainer = styled('div', {
   variants: {
     size: {
       small: {
-        width: '256px',
+        width: '292px',
       },
       large: {
         width: '324px',
@@ -67,16 +60,36 @@ const WordsGridContainer = styled('div', {
   },
 });
 
+const SDBWrapper = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  variants: {
+    size: {
+      small: {
+        padding: '0px',
+      },
+      large: {
+        padding: '0px 72px',
+      },
+    },
+  },
+});
+
 const StatsDisplayContainer = styled('div', {
   display: 'flex',
-  fontSize: '18px',
-  justifyContent: 'center',
   alignItems: 'center',
   variants: {
     size: {
-      medium: {
-        margin: '8px 0px 0px',
+      small: {
+        padding: '8px 4px 0px',
+        justifyContent: 'center',
+      },
+      large: {
+        padding: '4px 28px',
         justifyContent: 'flex-end',
+      },
+      xlarge: {
+        padding: '16px  232px',
       },
     },
   },
@@ -93,7 +106,7 @@ const LettersBankContainer = styled('div', {
         marginTop: '4px',
       },
       medium: {
-        marginTop: '20px',
+        height: '324px',
       },
     },
   },
@@ -102,14 +115,15 @@ const LettersBankContainer = styled('div', {
 const SpringCaddy = styled(animated.div, {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
   variants: {
     size: {
       small: {
         marginTop: '0px',
+        justifyContent: 'space-evenly',
       },
       large: {
         marginTop: '16px',
+        justifyContent: 'center',
       },
     },
   },
@@ -136,12 +150,14 @@ interface Props {
   attempts: string[][];
   ranking: string;
   solutionSets: Set<string>[];
+  statsModalOpen: boolean;
   tallyUserStats: (isWordSalad: boolean) => void;
   playNewWord: (word: string[]) => void;
   restartGame: () => void;
-  setHTPModalOpen: (bool: boolean) => void;
   displayToast: () => void;
   handleShareResults: () => Promise<void>;
+  setStatsModalOpen: (bool: boolean) => void;
+  setHTPModalOpen: (bool: boolean) => void;
 }
 
 const GameBoard: React.FC<Props> = ({
@@ -151,15 +167,15 @@ const GameBoard: React.FC<Props> = ({
   playedWords,
   attempts,
   solutionSets,
+  statsModalOpen,
   tallyUserStats,
   playNewWord,
   restartGame,
-  setHTPModalOpen,
   displayToast,
   handleShareResults,
+  setStatsModalOpen,
+  setHTPModalOpen,
 }) => {
-  // control display of stats modal
-  const [statsModalOpen, setStatsModalOpen] = useState<boolean>(false);
   const [rankingsModalOpen, setRankingsModalOpen] = useState<boolean>(false);
 
   const [currentWord, setCurrentWord] = useState<string[]>(
@@ -176,7 +192,7 @@ const GameBoard: React.FC<Props> = ({
   const isLastTurn = playedWords.length === 3;
 
   const isWordSalad = playedWords.length === 4 && playedWords[0].length > 0;
-  const isLastAttempt = attempts.length >= 7;
+  const isLastAttempt = attempts.length >= 6;
   const isBadAttempt =
     playedWords[0]?.length > 0 && solutionSets[0]?.size === 0;
   const isLostGame = isLastAttempt && isBadAttempt;
@@ -310,89 +326,90 @@ const GameBoard: React.FC<Props> = ({
   );
 
   return (
-    <BoardContainer
-      className="boardContainer"
-      size={{
-        '@initial': 'small',
-        '@bp1': 'small',
-        '@bp2': 'medium',
-      }}
-    >
-      <StatsDisplayContainer
-        className="statsDisplayContainer"
-        size={{
-          '@initial': 'medium',
-          '@bp2': 'medium',
-        }}
-      >
-        <StatsDisplay
-          saladDate={saladDate}
-          saladNumber={saladNumber}
-          attempts={attempts}
-          ranking={ranking}
-          statsModalOpen={statsModalOpen}
-          isWordSalad={isWordSalad}
-          isLostGame={isLostGame}
-          rankingsModalOpen={rankingsModalOpen}
-          setRankingsModalOpen={setRankingsModalOpen}
-          setStatsModalOpen={setStatsModalOpen}
-          setHTPModalOpen={setHTPModalOpen}
-          handleShareResults={handleShareResults}
-        />
-        <RestartButton restartGame={restartGame} disabled={disableReset} />
-      </StatsDisplayContainer>
-      <BoardWrapper
-        className="boardWrapper"
-        size={{
-          '@initial': 'small',
-          '@bp1': 'small',
-          '@bp2': 'medium',
-        }}
-      >
-        <WordsGridContainer
-          size={{
-            '@initial': 'small',
-            '@bp1': 'small',
-            '@bp2': 'large',
-          }}
+    <>
+      <Header
+        disableReset={disableReset}
+        restartGame={restartGame}
+        setHTPModalOpen={setHTPModalOpen}
+        setStatsModalOpen={setStatsModalOpen}
+      />
+      <BoardContainer className="boardContainer">
+        <SDBWrapper
+          size={{ '@initial': 'small', '@bp1': 'small', '@bp3': 'large' }}
         >
-          <WordsGrid playedWords={playedWords} solutionSets={solutionSets} />
-        </WordsGridContainer>
-        <LettersBankContainer
-          size={{
-            '@initial': 'small',
-            '@bp1': 'small',
-            '@bp2': 'medium',
-          }}
+          <StatsDisplayContainer
+            className="statsDisplayContainer"
+            size={{
+              '@initial': 'small',
+              '@bp1': 'small',
+              '@bp2': 'large',
+              '@bp4': 'xlarge',
+            }}
+          >
+            <StatsDisplay
+              attempts={attempts}
+              ranking={ranking}
+              isWordSalad={isWordSalad}
+              isLostGame={isLostGame}
+              rankingsModalOpen={rankingsModalOpen}
+              setRankingsModalOpen={setRankingsModalOpen}
+            />
+          </StatsDisplayContainer>
+          <BoardWrapper
+            className="boardWrapper"
+            size={{
+              '@initial': 'small',
+              '@bp1': 'small',
+              '@bp2': 'medium',
+              '@bp4': 'xlarge',
+            }}
+          >
+            <WordsGridContainer
+              size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'large' }}
+            >
+              <WordsGrid
+                playedWords={playedWords}
+                solutionSets={solutionSets}
+              />
+            </WordsGridContainer>
+            <LettersBankContainer
+              size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}
+            >
+              <LettersBank usedLetters={usedLetters} onClick={handleClick} />
+            </LettersBankContainer>
+          </BoardWrapper>
+        </SDBWrapper>
+        <SpringCaddy
+          className="springCaddy"
+          style={shakeStyles}
+          size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'large' }}
         >
-          <LettersBank usedLetters={usedLetters} onClick={handleClick} />
-        </LettersBankContainer>
-      </BoardWrapper>
-      <SpringCaddy
-        style={{
-          ...shakeStyles,
-        }}
-        size={{
-          '@initial': 'small',
-          '@bp1': 'small',
-          '@bp3': 'large',
-        }}
-      >
-        <EnterButton
-          disabled={disableSubmitDelete}
-          onClick={handleSubmitWord}
-        />
-        <CurrentWord
-          currentWord={currentWord}
-          isLastWord={isLastTurn}
-          handleKeyboardInput={handleKeyboardInput}
-        />
-        <DeleteButton
-          disabled={disableSubmitDelete}
-          onClick={clearLetterFromCurrentWord}
-        />
-      </SpringCaddy>
-    </BoardContainer>
+          <EnterButton
+            disabled={disableSubmitDelete}
+            onClick={handleSubmitWord}
+          />
+          <CurrentWord
+            currentWord={currentWord}
+            isLastWord={isLastTurn}
+            handleKeyboardInput={handleKeyboardInput}
+          />
+          <DeleteButton
+            disabled={disableSubmitDelete}
+            onClick={clearLetterFromCurrentWord}
+          />
+        </SpringCaddy>
+      </BoardContainer>
+      <StatsModal
+        saladDate={saladDate}
+        saladNumber={saladNumber}
+        attempts={attempts}
+        open={statsModalOpen}
+        isWordSalad={isWordSalad}
+        isLostGame={isLostGame}
+        onClose={() => setStatsModalOpen(false)}
+        handleShareResults={handleShareResults}
+      />
+    </>
   );
 };
 

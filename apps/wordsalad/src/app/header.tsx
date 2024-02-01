@@ -1,12 +1,11 @@
 import { styled } from '../styles';
-import { animated } from '@react-spring/web';
+import HelpButton from './buttons/HelpButton';
+import RestartButton from './buttons/RestartButton';
+import StatsButton from './buttons/StatsButtton';
 
-const APP_NAME = ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
-
-const HeaderContainer = styled(animated.div, {
+const HeaderContainer = styled('div', {
   display: 'flex',
-  padding: '8px 0px',
-  justifyContent: 'space-evenly',
+  justifyContent: 'space-between',
 });
 
 const Chip = styled('div', {
@@ -17,19 +16,17 @@ const Chip = styled('div', {
   variants: {
     size: {
       small: {
-        padding: '0px',
-        margin: '0px 4px',
+        padding: '2px',
+        margin: '2px',
       },
       medium: {
-        marginLeft: '16px',
-        padding: '8px 0px 4px 64px',
+        padding: '8px',
       },
     },
   },
 });
 
-const HeaderTile = styled(animated.div, {
-  inset: 0,
+const HeaderTile = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -46,7 +43,7 @@ const HeaderTile = styled(animated.div, {
       small: {
         width: '24px',
         height: '32px',
-        margin: '4px 2px',
+        margin: '2px',
       },
       medium: {
         width: '56px',
@@ -57,32 +54,55 @@ const HeaderTile = styled(animated.div, {
   },
 });
 
-const Header: React.FC = () => (
-  <HeaderContainer className="header">
-    <div style={{ display: 'flex' }}>
-      {APP_NAME.map((letter, idx) => (
-        <HeaderTile
-          key={`${letter}-${idx}`}
-          size={{
-            '@initial': 'small',
-            '@bp1': 'small',
-            '@bp2': 'medium',
-          }}
-        >
-          {letter.toUpperCase()}
-        </HeaderTile>
-      ))}
-    </div>
-    <Chip
-      size={{
-        '@initial': 'small',
-        '@bp1': 'small',
-        '@bp2': 'medium',
-      }}
-    >
-      by hhk
-    </Chip>
-  </HeaderContainer>
-);
+interface Props {
+  disableReset: boolean;
+  restartGame: () => void;
+  setHTPModalOpen: (bool: boolean) => void;
+  setStatsModalOpen: (bool: boolean) => void;
+}
+
+const Header: React.FC<Props> = ({
+  disableReset,
+  restartGame,
+  setHTPModalOpen,
+  setStatsModalOpen,
+}) => {
+  const isSmallScreen = window?.matchMedia('(max-width: 400px)')?.matches;
+  const appName = isSmallScreen
+    ? ['w', 'r', 'd', 's', 'l', 'd']
+    : ['w', 'o', 'r', 'd', 's', 'a', 'l', 'a', 'd'];
+  const justifyContent = isSmallScreen
+    ? { justifyContent: 'space-evenly' }
+    : { justifyContent: 'center' };
+  return (
+    <HeaderContainer className="header" style={{ ...justifyContent }}>
+      <div style={{ display: 'flex' }}>
+        {appName.map((letter, idx) => (
+          <HeaderTile
+            key={`${letter}-${idx}`}
+            size={{
+              '@initial': 'small',
+              '@bp1': 'small',
+              '@bp2': 'medium',
+            }}
+          >
+            {letter.toUpperCase()}
+          </HeaderTile>
+        ))}
+      </div>
+      <Chip
+        size={{
+          '@initial': 'small',
+          '@bp1': 'small',
+          '@bp2': 'medium',
+        }}
+      >
+        <StatsButton onClick={() => setStatsModalOpen(true)} />
+        <HelpButton onClick={() => setHTPModalOpen(true)} />
+        <RestartButton restartGame={restartGame} disabled={disableReset} />
+      </Chip>
+    </HeaderContainer>
+  );
+};
 
 export default Header;

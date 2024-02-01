@@ -5,5 +5,6 @@ export const { styled } = createStitches({
     bp1: '(min-width: 320px)',
     bp2: '(min-width: 768px)',
     bp3: '(min-width: 1024px)',
+    bp4: '(min-width: 1300px)',
   },
 });

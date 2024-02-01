@@ -1,20 +1,9 @@
-import { styled } from '@stitches/react';
-import Header from './header';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { camelCase } from 'change-case';
 import GameLayer from './GameLayer';
 import HowToPlayModal from './modals/HowToPlayModal';
 import config from '../config';
-
-const AppContainer = styled('div', {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  backgroundColor: '#F3EFE0',
-});
 
 export type DailySalad = {
   id: string;
@@ -59,6 +48,9 @@ export function App() {
   const [howToPlayModalOpen, setHTPModalOpen] = useState<boolean>(true);
   const [htpModalDismissed, setHTPModalDismissed] = useState<boolean>(false);
 
+  // control display of stats modal
+  const [statsModalOpen, setStatsModalOpen] = useState<boolean>(false);
+
   const [dailySalad, setSalad] = useState<DailySalad>(initialSalad());
 
   useEffect(() => {
@@ -77,15 +69,16 @@ export function App() {
   };
 
   return (
-    <AppContainer>
-      <Header />
+    <>
       <GameLayer
         key={dailySalad.initialWord}
         dailySalad={dailySalad}
+        statsModalOpen={statsModalOpen}
+        setStatsModalOpen={setStatsModalOpen}
         setHTPModalOpen={setHTPModalOpen}
       />
       <HowToPlayModal open={howToPlayModalOpen} onClose={closeModal} />
-    </AppContainer>
+    </>
   );
 }
 

@@ -1,8 +1,5 @@
 import { styled } from '@stitches/react';
 import { Tooltip } from 'react-tooltip';
-import StatsModal from './modals/StatsModal';
-import HelpButton from './buttons/HelpButton';
-import StatsButton from './buttons/StatsButtton';
 import RankingsModal from './modals/RankingsModal';
 
 const DisplayContainer = styled('div', {
@@ -36,51 +33,33 @@ const AttemptBadge = styled('div', {
 });
 
 interface Props {
-  saladDate: string;
-  saladNumber: number;
   attempts: string[][];
   ranking: string;
-  statsModalOpen: boolean;
   isWordSalad: boolean;
   isLostGame: boolean;
   rankingsModalOpen: boolean;
   setRankingsModalOpen: (bool: boolean) => void;
-  setStatsModalOpen: (bool: boolean) => void;
-  setHTPModalOpen: (bool: boolean) => void;
-  handleShareResults: () => Promise<void>;
 }
 
 const StatsDisplay: React.FC<Props> = ({
-  saladDate,
-  saladNumber,
   attempts,
   ranking,
-  statsModalOpen,
   isWordSalad,
   isLostGame,
   rankingsModalOpen,
   setRankingsModalOpen,
-  setStatsModalOpen,
-  setHTPModalOpen,
-  handleShareResults,
 }) => {
   return (
     <DisplayContainer>
       <DisplayContent>
-        <RankContainer>
+        {/* <RankContainer>
           <div
             style={{ margin: '4px', cursor: 'pointer', width: '180px' }}
             onClick={() => setRankingsModalOpen(true)}
           >
             Current Rank: <span style={{ fontWeight: 'bold' }}>{ranking}</span>
           </div>
-          <div style={{ margin: '4px' }}>
-            <StatsButton onClick={() => setStatsModalOpen(true)} />
-          </div>
-          <div style={{ margin: '4px' }}>
-            <HelpButton onClick={() => setHTPModalOpen(true)} />
-          </div>
-        </RankContainer>
+        </RankContainer> */}
         <AttemptsDisplay attempts={attempts} />
       </DisplayContent>
       <RankingsModal
@@ -90,16 +69,6 @@ const StatsDisplay: React.FC<Props> = ({
         isWordSalad={isWordSalad}
         isLostGame={isLostGame}
         onClose={() => setRankingsModalOpen(false)}
-      />
-      <StatsModal
-        saladDate={saladDate}
-        saladNumber={saladNumber}
-        attempts={attempts}
-        open={statsModalOpen}
-        isWordSalad={isWordSalad}
-        isLostGame={isLostGame}
-        onClose={() => setStatsModalOpen(false)}
-        handleShareResults={handleShareResults}
       />
     </DisplayContainer>
   );
@@ -113,7 +82,7 @@ interface AttemptsDisplayProps {
 const AttemptsDisplay: React.FC<AttemptsDisplayProps> = ({ attempts }) => {
   // make an array of seven past attempts and any remaining attempts
   const attemptsAndRemaining = Array.from(
-    Array(7),
+    Array(6),
     (_num, idx) => attempts[idx]
   );
   return (
