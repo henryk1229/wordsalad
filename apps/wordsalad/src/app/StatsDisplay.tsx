@@ -1,6 +1,6 @@
 import { styled } from '@stitches/react';
 import { Tooltip } from 'react-tooltip';
-import RankingsModal from './modals/RankingsModal';
+import RankingsModal from './Modals/RankingsModal';
 
 const DisplayContainer = styled('div', {
   display: 'flex',
