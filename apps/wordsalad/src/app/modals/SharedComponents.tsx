@@ -27,7 +27,7 @@ export const SubHeader = styled('div', {
     size: {
       small: {
         margin: '4px 8px 0px',
-        fontSize: '14px',
+        fontSize: '16px',
       },
       medium: {
         margin: '8px 16px 0px',
@@ -71,8 +71,8 @@ const Tile = styled('div', {
   variants: {
     size: {
       small: {
-        width: '16px',
-        height: '24px',
+        width: '22px',
+        height: '30px',
         fontWeight: 600,
         fontSize: '15px',
       },
@@ -98,7 +98,15 @@ export const ResponsiveModal: React.FC<Props> = ({
   children,
 }) => {
   const isSmallScreen = window?.matchMedia('(max-width: 800px)')?.matches;
-  const width = isSmallScreen ? '66%' : '30%';
+  const dynamicStyles = isSmallScreen
+    ? {
+        width: '78%',
+        padding: '16px',
+      }
+    : {
+        width: '30%',
+        padding: '32px',
+      };
   return (
     <Modal
       open={open}
@@ -108,13 +116,13 @@ export const ResponsiveModal: React.FC<Props> = ({
       aria-describedby="modal-indicating-game-over"
       styles={{
         modal: {
-          width,
           borderRadius: '3px',
           backgroundColor: '#F3EFE0',
           fontFamily: 'Helvetica',
-          padding: '32px',
+          ...dynamicStyles,
         },
       }}
+      showCloseIcon={false}
       focusTrapped={false}
     >
       <Header size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}>
