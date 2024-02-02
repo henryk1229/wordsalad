@@ -1,16 +1,4 @@
-import { styled } from '@stitches/react';
-
-const StyledButton = styled('button', {
-  border: 'none',
-  display: 'flex',
-  flexDirection: 'column',
-  // alignItems: 'center',
-  backgroundColor: '#F3EFE0',
-  '&:hover': {
-    opacity: 0.75,
-    cursor: 'pointer',
-  },
-});
+import { StyledButton } from './StyledButton';
 
 interface Props {
   onClick: () => void;
@@ -18,7 +6,7 @@ interface Props {
 
 // renders a stylized stats button
 const StatsButton: React.FC<Props> = ({ onClick }) => (
-  <StyledButton onClick={onClick}>
+  <StyledButton onClick={onClick} disabled={false}>
     <StatsIcon />
   </StyledButton>
 );

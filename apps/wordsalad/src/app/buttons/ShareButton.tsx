@@ -1,24 +1,4 @@
-import { styled } from '@stitches/react';
-
-const StyledButton = styled('button', {
-  border: 'none',
-  backgroundColor: '#217C7E',
-  '&:hover': {
-    opacity: 0.75,
-    cursor: 'pointer',
-  },
-  margin: '16px',
-  borderRadius: '30px',
-});
-
-const ButtonContent = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  margin: '8px 24px',
-  color: 'white',
-  fontSize: 'large',
-});
+import { StyledButton, ButtonContent } from './StyledButton';
 
 interface Props {
   onClick: () => Promise<void>;
@@ -26,7 +6,12 @@ interface Props {
 
 // renders a stylized restart button
 const ShareButton: React.FC<Props> = ({ onClick }) => (
-  <StyledButton onClick={onClick}>
+  <StyledButton
+    onClick={onClick}
+    disabled={false}
+    backgroundColor="#217C7E"
+    margin="16px"
+  >
     <ButtonContent>
       <div style={{ marginRight: '8px' }}>Share</div>
       <ShareIcon />

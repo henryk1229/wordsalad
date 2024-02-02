@@ -1,16 +1,4 @@
-import { styled } from '@stitches/react';
-
-const StyledButton = styled('button', {
-  border: 'none',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  backgroundColor: '#F3EFE0',
-  '&:hover': {
-    opacity: 0.75,
-    cursor: 'pointer',
-  },
-});
+import { StyledButton } from './StyledButton';
 
 interface Props {
   disabled: boolean;
@@ -19,13 +7,7 @@ interface Props {
 
 // renders a stylized restart button
 const RestartButton: React.FC<Props> = ({ disabled, restartGame }) => (
-  <StyledButton
-    onClick={restartGame}
-    disabled={disabled}
-    style={{
-      ...(disabled ? { opacity: 0.5, cursor: 'not-allowed' } : null),
-    }}
-  >
+  <StyledButton onClick={restartGame} disabled={disabled}>
     <RestartIcon />
   </StyledButton>
 );
@@ -37,7 +19,7 @@ const RestartIcon = () => (
     height={20}
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#9A3334"
+    stroke="#000000"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"

@@ -1,17 +1,4 @@
-import { styled } from '@stitches/react';
-
-const StyledButton = styled('button', {
-  border: 'none',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  backgroundColor: '#F3EFE0',
-  '&:hover': {
-    opacity: 0.75,
-    cursor: 'pointer',
-  },
-  margin: '4px 0px',
-});
+import { StyledButton } from './StyledButton';
 
 interface Props {
   disabled: boolean;
@@ -20,13 +7,7 @@ interface Props {
 
 // renders a stylized restart button
 const DeleteButton: React.FC<Props> = ({ disabled, onClick }) => (
-  <StyledButton
-    onClick={onClick}
-    disabled={disabled}
-    style={{
-      ...(disabled ? { opacity: 0.5, cursor: 'not-allowed' } : null),
-    }}
-  >
+  <StyledButton onClick={onClick} disabled={disabled}>
     <DeleteIcon />
   </StyledButton>
 );
