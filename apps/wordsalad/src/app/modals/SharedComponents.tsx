@@ -104,7 +104,7 @@ export const ResponsiveModal: React.FC<Props> = ({
         padding: '16px',
       }
     : {
-        width: '30%',
+        width: '36%',
         padding: '32px',
       };
   return (

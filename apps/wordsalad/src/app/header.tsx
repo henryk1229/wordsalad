@@ -20,7 +20,7 @@ const Chip = styled('div', {
         margin: '2px',
       },
       medium: {
-        padding: '8px',
+        padding: '8px 8px 2px',
       },
     },
   },
