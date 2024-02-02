@@ -1,16 +1,4 @@
-import { styled } from '@stitches/react';
-
-const StyledButton = styled('button', {
-  border: 'none',
-  display: 'flex',
-  flexDirection: 'column',
-  // alignItems: 'center',
-  backgroundColor: '#F3EFE0',
-  '&:hover': {
-    opacity: 0.75,
-    cursor: 'pointer',
-  },
-});
+import { StyledButton } from './StyledButton';
 
 interface Props {
   onClick: () => void;
@@ -18,19 +6,23 @@ interface Props {
 
 // renders a stylized restart button
 const HelpButton: React.FC<Props> = ({ onClick }) => (
-  <StyledButton onClick={onClick}>
-    <HelpIcon />
+  <StyledButton onClick={onClick} disabled={false}>
+    <HelpIcon size={20} />
   </StyledButton>
 );
 
-const HelpIcon = ({ size = 20, color = '#000000' }) => (
+interface IconProps {
+  size: number;
+}
+
+const HelpIcon: React.FC<IconProps> = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
     viewBox="0 0 24 24"
     fill="none"
-    stroke={color}
+    stroke="#000000"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
