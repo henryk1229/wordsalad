@@ -8,15 +8,19 @@ interface Props {
 // renders a stylized restart button
 const DeleteButton: React.FC<Props> = ({ disabled, onClick }) => (
   <StyledButton onClick={onClick} disabled={disabled}>
-    <DeleteIcon />
+    <DeleteIcon size={30} />
   </StyledButton>
 );
 
-const DeleteIcon = () => (
+interface IconProps {
+  size: number;
+}
+
+const DeleteIcon: React.FC<IconProps> = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={30}
-    height={30}
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="#9A3334"

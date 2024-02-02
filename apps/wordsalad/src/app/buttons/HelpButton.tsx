@@ -7,15 +7,19 @@ interface Props {
 // renders a stylized restart button
 const HelpButton: React.FC<Props> = ({ onClick }) => (
   <StyledButton onClick={onClick} disabled={false}>
-    <HelpIcon />
+    <HelpIcon size={20} />
   </StyledButton>
 );
 
-const HelpIcon = () => (
+interface IconProps {
+  size: number;
+}
+
+const HelpIcon: React.FC<IconProps> = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={20}
-    height={20}
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="#000000"

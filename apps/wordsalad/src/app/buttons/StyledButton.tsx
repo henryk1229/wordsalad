@@ -14,7 +14,7 @@ export const ButtonContent = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  margin: '8px 24px',
+  margin: '8px 16px',
   color: 'white',
   fontSize: 'large',
 });

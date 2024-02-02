@@ -7,18 +7,22 @@ interface Props {
 // renders a stylized stats button
 const StatsButton: React.FC<Props> = ({ onClick }) => (
   <StyledButton onClick={onClick} disabled={false}>
-    <StatsIcon />
+    <StatsIcon size={20} />
   </StyledButton>
 );
 
-const StatsIcon = ({ size = 20, color = '#000000' }) => (
+interface IconProps {
+  size: number;
+}
+
+const StatsIcon: React.FC<IconProps> = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
     viewBox="0 0 24 24"
     fill="none"
-    stroke={color}
+    stroke="#000000"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"

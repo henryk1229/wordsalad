@@ -10,20 +10,24 @@ const ShareButton: React.FC<Props> = ({ onClick }) => (
     onClick={onClick}
     disabled={false}
     backgroundColor="#217C7E"
-    margin="16px"
+    margin="8px 16px"
   >
     <ButtonContent>
       <div style={{ marginRight: '8px' }}>Share</div>
-      <ShareIcon />
+      <ShareIcon size={28} />
     </ButtonContent>
   </StyledButton>
 );
 
-const ShareIcon = () => (
+interface IconProps {
+  size: number;
+}
+
+const ShareIcon: React.FC<IconProps> = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={28}
-    height={28}
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="white"

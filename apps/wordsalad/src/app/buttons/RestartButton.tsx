@@ -8,15 +8,19 @@ interface Props {
 // renders a stylized restart button
 const RestartButton: React.FC<Props> = ({ disabled, restartGame }) => (
   <StyledButton onClick={restartGame} disabled={disabled}>
-    <RestartIcon />
+    <RestartIcon size={20} />
   </StyledButton>
 );
 
-const RestartIcon = () => (
+interface IconProps {
+  size: number;
+}
+
+const RestartIcon: React.FC<IconProps> = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={20}
-    height={20}
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="#000000"

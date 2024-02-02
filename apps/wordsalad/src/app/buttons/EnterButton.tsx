@@ -8,15 +8,19 @@ interface Props {
 // renders a stylized restart button
 const EnterButton: React.FC<Props> = ({ disabled, onClick }) => (
   <StyledButton onClick={onClick} disabled={disabled}>
-    <UploadIcon />
+    <UploadIcon size={28} />
   </StyledButton>
 );
 
-const UploadIcon = () => (
+interface IconProps {
+  size: number;
+}
+
+const UploadIcon: React.FC<IconProps> = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={28}
-    height={28}
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="#9A3334"
