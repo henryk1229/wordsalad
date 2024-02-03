@@ -101,7 +101,7 @@ export const ResponsiveModal: React.FC<Props> = ({
   const dynamicStyles = isSmallScreen
     ? {
         width: '78%',
-        padding: '16px',
+        padding: '32px 16px',
       }
     : {
         width: '36%',
@@ -122,7 +122,6 @@ export const ResponsiveModal: React.FC<Props> = ({
           ...dynamicStyles,
         },
       }}
-      showCloseIcon={false}
       focusTrapped={false}
     >
       <Header size={{ '@initial': 'small', '@bp1': 'small', '@bp2': 'medium' }}>
