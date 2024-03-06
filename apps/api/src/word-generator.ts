@@ -6,7 +6,6 @@ export const wordGenerator = (usedWords: string[]) => {
   let generatedWords: string[] = [];
   let chosenWord: string | undefined = undefined;
   while (!chosenWord) {
-    console.log(generatedWords);
     for (const word of generatedWords) {
       const letters = word.split('');
       const uniqueLetters = new Set(letters);
