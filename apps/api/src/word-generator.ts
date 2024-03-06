@@ -6,13 +6,15 @@ export const wordGenerator = (usedWords: string[]) => {
   let generatedWords: string[] = [];
   let chosenWord: string | undefined = undefined;
   while (!chosenWord) {
+    console.log(generatedWords);
     for (const word of generatedWords) {
       const letters = word.split('');
       const uniqueLetters = new Set(letters);
       if (
         word.length === 5 &&
         uniqueLetters.size === 5 &&
-        !usedWords.includes(word)
+        !usedWords.includes(word) &&
+        !word.endsWith('x')
       ) {
         chosenWord = word;
       }
