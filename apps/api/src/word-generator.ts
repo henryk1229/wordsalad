@@ -12,7 +12,8 @@ export const wordGenerator = (usedWords: string[]) => {
       if (
         word.length === 5 &&
         uniqueLetters.size === 5 &&
-        !usedWords.includes(word)
+        !usedWords.includes(word) &&
+        !word.endsWith('x')
       ) {
         chosenWord = word;
       }
