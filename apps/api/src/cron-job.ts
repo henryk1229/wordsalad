@@ -4,12 +4,17 @@ import config from './config';
 
 const SCHEDULE = '1 3 * * 0-6';
 
-export const scheduleCronAndLogs = () => {
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+export const scheduleCronAndLogs = async () => {
   const isValid = cron.validate(SCHEDULE);
 
   if (!isValid) {
     throw new Error('INVALID CRON SCHEDULE');
   }
+
+  // wait for railway private network
+  await sleep(3_000);
 
   cron.schedule(
     SCHEDULE,
