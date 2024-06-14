@@ -14,7 +14,7 @@ export const scheduleCronAndLogs = async () => {
   }
 
   // wait for railway private network
-  await sleep(3_000);
+  await sleep(5_000);
 
   cron.schedule(
     SCHEDULE,
