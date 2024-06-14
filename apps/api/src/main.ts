@@ -63,8 +63,14 @@ app.post('/generate-salad', async (_req, res) => {
   res.send({ initialWord });
 });
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 app.post('/update-salad', async (_req, res) => {
   const { initialWord, solutionSet } = await generateWordSalad();
+
+  // wait for railway private network
+  await sleep(5_000);
+
   const { rows } = await query({
     text: 'select id from salads order by salad_number desc limit 1',
   });
@@ -74,6 +80,7 @@ app.post('/update-salad', async (_req, res) => {
     text: 'update salads set initial_word = $1, solution_set = $2 where id = $3',
     params: [initialWord, solutionSet, id],
   });
+  console.log(`UPDATING SALAD: ${initialWord}`);
   res.send({ initialWord });
 });
 

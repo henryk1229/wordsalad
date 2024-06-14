@@ -8,15 +8,11 @@
     "build": "nx run-many -t build",
     "build-client": "nx run wordsalad:build"
   },
-  "engines": {
-    "node": "^16.14.0 || ^20.0.0"
-  },
   "dependencies": {
     "@react-spring/web": "^9.7.3",
     "@stitches/react": "^1.2.8",
     "@swc/helpers": "~0.5.2",
     "axios": "^1.0.0",
-    "better-random-words": "^1.0.0",
     "change-case": "^5.3.0",
     "cors": "^2.8.5",
     "dictionary-en": "^4.0.0",
@@ -39,7 +35,7 @@
     "@nx/cypress": "17.0.1",
     "@nx/eslint": "17.0.1",
     "@nx/eslint-plugin": "17.0.1",
-    "@nx/express": "^17.0.1",
+    "@nx/express": "^19.3.0",
     "@nx/jest": "17.0.1",
     "@nx/js": "17.0.1",
     "@nx/node": "17.0.1",
