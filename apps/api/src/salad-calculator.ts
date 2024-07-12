@@ -11,13 +11,13 @@ const makeDifficultySettings = () => {
   };
   // 0 = Sunday... 6 = Saturday
   const daysMap = {
-    0: difficultyMap['MEDIUM'],
+    0: difficultyMap['EASY'],
     1: difficultyMap['EASY'],
     2: difficultyMap['EASY'],
     3: difficultyMap['EASY'],
-    4: difficultyMap['MEDIUM'],
-    5: difficultyMap['HARD'],
-    6: difficultyMap['HARD'],
+    4: difficultyMap['EASY'],
+    5: difficultyMap['MEDIUM'],
+    6: difficultyMap['MEDIUM'],
   };
   return {
     daysMap,

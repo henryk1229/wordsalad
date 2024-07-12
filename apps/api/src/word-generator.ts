@@ -1,24 +1,45 @@
-// const { generate } = await import('random-words');
 const TEMP_LIST = [
-  'grain',
-  'front',
-  'spite',
-  'smoke',
-  'birth',
-  'spent',
-  'acres',
-  'human',
-  'swung',
-  'close',
-  'bound',
-  'snake',
-  'claws',
-  'curve',
-  'sharp',
-  'learn',
-  'bring',
-  'depth',
-  'trunk',
+  'strip',
+  'doubt',
+  'angle',
+  'meant',
+  'train',
+  'chest',
+  'whale',
+  'chief',
+  'worth',
+  'lucky',
+  'slope',
+  'clear',
+  'plane',
+  'porch',
+  'being',
+  'pound',
+  'sight',
+  'drink',
+  'parts',
+  'movie',
+  'empty',
+  'candy',
+  'dance',
+  'music',
+  'exist',
+  'earth',
+  'pilot',
+  'found',
+  'water',
+  'taken',
+  'noted',
+  'quick',
+  'dozen',
+  'group',
+  'ankle',
+  'chose',
+  'avoid',
+  'bleak',
+  'zebra',
+  'count',
+  'truck',
 ];
 // generates a random five letter word when called
 export const wordGenerator = (usedWords: string[]) => {
@@ -40,5 +61,7 @@ export const wordGenerator = (usedWords: string[]) => {
   // }
   // return chosenWord;
 
-  return TEMP_LIST.shift();
+  const idx = Math.floor(Math.random() * TEMP_LIST.length);
+
+  return TEMP_LIST[idx];
 };
