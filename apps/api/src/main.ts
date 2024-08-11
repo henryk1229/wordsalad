@@ -51,7 +51,7 @@ app.post('/spellcheck', async (req, res) => {
 });
 
 app.post('/generate-salad', async (_req, res) => {
-  const { initialWord, solutionSet } = await generateWordSalad();
+  const { initialWord, solutionSet } = generateWordSalad();
   // insert into postgres
   const current_date = new Date();
   const yyyyMmDd = current_date.toISOString().split('T')[0];
@@ -66,7 +66,7 @@ app.post('/generate-salad', async (_req, res) => {
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 app.post('/update-salad', async (_req, res) => {
-  const { initialWord, solutionSet } = await generateWordSalad();
+  const { initialWord, solutionSet } = generateWordSalad();
 
   // wait for railway private network
   await sleep(5_000);

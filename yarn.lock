@@ -10972,10 +10972,10 @@ word-wrap@^1.2.5:
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.5.tgz#d2c45c6dd4fbce621a66f136cbe328afd0410b34"
   integrity sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==
 
-wordsalad-calculator@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/wordsalad-calculator/-/wordsalad-calculator-0.1.8.tgz#6da4c5c9f14f991cebc64c42611691760af0791a"
-  integrity sha512-9ATXqku2wLNjLQEGRBEX4KHiK4LE2nG1JCtBJ+YUx0odv+tvVdD56V5J7lyPRYp3scbQI37PFWE2zbviYS54/g==
+wordsalad-calculator@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/wordsalad-calculator/-/wordsalad-calculator-0.2.0.tgz#475ba3a812c5520fa68af92949ce9d1b4f0c0028"
+  integrity sha512-cvrwl3HK2cjl19YcwLQlYVoUHgeXLbPIpMNh5vMyVhXtcNWC4J3K/EH7LS+/XlbCwgIN27jMOp3RKE6ZJ3VCOA==
 
 wrap-ansi@^6.2.0:
   version "6.2.0"
